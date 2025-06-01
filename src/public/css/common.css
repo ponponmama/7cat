@@ -1,0 +1,71 @@
+/* 共通のスタイル */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Zen Kurenaido', sans-serif;
+}
+
+.header-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.514);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-family: 'Alex Brush', cursive;
+}
+
+.nav-menu {
+    padding: 4% 2%;
+}
+
+.nav-menu-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2%;
+}
+
+.nav-menu-item {
+    margin: 0 3%;
+}
+
+.nav-menu-link {
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.nav-menu-link:hover {
+    color: rgb(193, 245, 193);
+}
+
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-color: black;
+}
+
+@media (max-width: 412px) {
+    .nav-menu-link {
+        font-size: 1.5rem;
+    }
+}
