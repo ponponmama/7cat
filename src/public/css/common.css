@@ -6,6 +6,9 @@ html, body {
     padding: 0;
 }
 
+body { visibility: hidden; }
+body.fonts-loaded { visibility: visible; }
+
 .header-section {
     position: fixed;
     top: 0;
@@ -53,10 +56,10 @@ html, body {
 .container {
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     position: relative;
-    overflow: hidden;
+    padding-top: 75px; /* ヘッダーの高さ分のパディング */
     background-color: black;
 }
 

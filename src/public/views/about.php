@@ -1,6 +1,8 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $page_title = 'About Me';
-$page_css = '../css/about.css';
-$body_class = 'about-page';
+$page_css = 'about.css';
 include __DIR__ . '/layouts/app.php';
 ?>

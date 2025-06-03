@@ -80,6 +80,44 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             isAnimating = false;
             step = 0;
+            // ゆらゆらアニメーション
+            title.animate([
+                { transform: 'rotate(0deg) scale(1,1)' },
+                { transform: 'rotate(-8deg) scale(1.05,0.95)' },
+                { transform: 'rotate(8deg) scale(0.95,1.05)' },
+                { transform: 'rotate(-6deg) scale(1.04,0.96)' },
+                { transform: 'rotate(6deg) scale(0.96,1.04)' },
+                { transform: 'rotate(-4deg) scale(1.03,0.97)' },
+                { transform: 'rotate(4deg) scale(0.97,1.03)' },
+                { transform: 'rotate(-2deg) scale(1.02,0.98)' },
+                { transform: 'rotate(2deg) scale(0.98,1.02)' },
+                { transform: 'rotate(-1deg) scale(1.01,0.99)' },
+                { transform: 'rotate(0deg) scale(1,1)' }
+            ], {
+                duration: 1200,
+                easing: 'cubic-bezier(.36,.07,.19,.97)',
+                fill: 'forwards'
+            });
+
+            // 鮮やかな黄色で点滅（色と影を交互に切り替え）
+            const blinkKeyframes = [
+                { color: '#ffe600', textShadow: '0 0 20px #ffe600, 0 0 40px #fff200', offset: 0 },
+                { color: '#fff',    textShadow: '0 0 0px #fff', offset: 0.5 },
+                { color: '#ffe600', textShadow: '0 0 20px #ffe600, 0 0 40px #fff200', offset: 1 }
+            ];
+            const blink = title.animate(
+                blinkKeyframes,
+                {
+                    duration: 150, // 1回の点滅
+                    iterations: 3  // 5回点滅
+                }
+            );
+
+            // アニメーション終了後に色を元に戻す
+            blink.onfinish = () => {
+                title.style.color = 'aliceblue';
+                title.style.textShadow = '0 0 10px rgba(240, 248, 255, 0.8)';
+            };
         }
     }
 
@@ -237,14 +275,38 @@ document.addEventListener('DOMContentLoaded', () => {
             mouseY >= titleRect.top &&
             mouseY <= titleRect.bottom
         ) {
-            // 色変化
-            const ratio = x / 100;
-            const r = Math.round(0 + (255 - 0) * ratio);
-            const g = Math.round(0 + (0 - 0) * ratio);
-            const b = Math.round(255 + (0 - 255) * ratio);
-            title.style.color = `rgb(${r}, ${g}, ${b})`;
-            title.style.textShadow = `0 0 10px rgba(${r}, ${g}, ${b}, 0.8)`;
-            isTitleActive = true;
+            if (!isAnimating) {
+                // 色変化（黄色→元色→赤→青）
+                const ratio = x / 100;
+                let r, g, b;
+                if (ratio < 1/3) {
+                    // 黄色→元色
+                    const t = ratio / (1/3);
+                    r = Math.round(220 + (127 - 220) * t);
+                    g = Math.round(180 + (167 - 180) * t);
+                    b = Math.round(40 + (217 - 40) * t);
+                } else if (ratio < 2/3) {
+                    // 元色→赤
+                    const t = (ratio - 1/3) / (1/3);
+                    r = Math.round(127 + (200 - 127) * t);
+                    g = Math.round(167 + (40 - 167) * t);
+                    b = Math.round(217 + (40 - 217) * t);
+                } else {
+                    // 赤→青
+                    const t = (ratio - 2/3) / (1/3);
+                    r = Math.round(200 + (0 - 200) * t);
+                    g = Math.round(40 + (60 - 40) * t);
+                    b = Math.round(40 + (180 - 40) * t);
+                }
+                title.style.color = `rgb(${r}, ${g}, ${b})`;
+                title.style.textShadow = `0 0 10px rgba(${r}, ${g}, ${b}, 1.0)`;
+                isTitleActive = true;
+            } else {
+                // アニメーション中はデフォルト色
+                title.style.color = 'aliceblue';
+                title.style.textShadow = '0 0 10px rgba(240, 248, 255, 0.8)';
+                isTitleActive = false;
+            }
         } else {
             if (isTitleActive) {
                 title.style.color = 'aliceblue';
@@ -363,46 +425,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 足跡アニメーション管理
-        if (paw1Distance < pawActiveRange) {
-            if (pawActiveType !== 'left' && !isAnimating) {
-                clearInterval(animationInterval);
-                animationInterval = null;
-                pawTrails.forEach((paw, i) => {
-                    paw.style.opacity = 0;
-                    paw.style.animation = 'none';
-                    paw.classList.remove(`paw-trail-${i+1}`);
-                });
-                step = 0;  // ステップをリセット
-                isAnimating = true;  // アニメーション開始
-                showNextPaw();
-                pawActiveType = 'left';
-            }
-        } else if (paw2Distance < pawActiveRange) {
-            if (pawActiveType !== 'right' && !isAnimating) {
-                clearInterval(animationInterval);
-                animationInterval = null;
-                pawTrails.forEach((paw, i) => {
-                    paw.style.opacity = 0;
-                    paw.style.animation = 'none';
-                    paw.classList.remove(`paw-trail-${i+1}`);
-                });
-                step = 0;  // ステップをリセット
-                isAnimating = true;  // アニメーション開始
-                showNextPaw();
-                pawActiveType = 'right';
-            }
-        } else {
-            if (pawActiveType !== null) {
-                clearInterval(animationInterval);
-                animationInterval = null;
-                pawTrails.forEach((paw, i) => {
-                    paw.style.opacity = 0;
-                    paw.style.animation = 'none';
-                    paw.classList.remove(`paw-trail-${i+1}`);
-                });
-                isAnimating = false;  // アニメーション停止
-                step = 0;  // ステップをリセット
-                pawActiveType = null;
+        if (!isAnimating) {
+            if (paw1Distance < pawActiveRange) {
+                if (pawActiveType !== 'left') {
+                    pawActiveType = 'left';
+                    isAnimating = true;
+                    showNextPaw();
+                }
+            } else if (paw2Distance < pawActiveRange) {
+                if (pawActiveType !== 'right') {
+                    pawActiveType = 'right';
+                    isAnimating = true;
+                    showNextPaw();
+                }
+            } else {
+                if (pawActiveType !== null) {
+                    pawActiveType = null;
+                    isAnimating = false;
+                    step = 0;
+                }
             }
         }
     });
@@ -414,4 +455,15 @@ document.addEventListener('DOMContentLoaded', () => {
         title.style.setProperty('--mouse-x', '50%');
         title.style.setProperty('--mouse-y', '50%');
     });
+
+    if (document.fonts) {
+        document.fonts.ready.then(function () {
+            document.body.classList.add('fonts-loaded');
+        });
+    } else {
+        // 古いブラウザ用
+        window.onload = function () {
+            document.body.classList.add('fonts-loaded');
+        };
+    }
 });
