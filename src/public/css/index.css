@@ -116,44 +116,11 @@ body.index-page {
     z-index: 1;
 }
 
-/* 常に縦に揺れるアニメーション */
-@keyframes float1 {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-/* カーソルが近づいた時の横揺れ */
-@keyframes shake1 {
-    0% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-2px);
-    }
-    50% {
-        transform: translateX(2px);
-    }
-    75% {
-        transform: translateX(-2px);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
 .paw {
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     opacity: 0.2;
-    animation: float1 3s ease-in-out infinite;
     transform: translateY(0);
 }
 
@@ -198,11 +165,9 @@ body.index-page {
     position: fixed;
     bottom: 20%;
     right: 20%;
-    width: 128px;
-    height: 128px;
+    width: 100px;
+    height: 100px;
     opacity: 0.2;
-    animation: float2 3s ease-in-out infinite;
-    animation-delay: 1.5s;
 }
 
 .paw-second .main-second {
@@ -241,57 +206,17 @@ body.index-page {
     right: -8%;
 }
 
-@keyframes float2 {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-@keyframes shake2 {
-    0% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(2px);
-    }
-    50% {
-        transform: translateX(-2px);
-    }
-    75% {
-        transform: translateX(2px);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
 /* 足跡のスタイル（中央下からスタート） */
 .paw-trail {
     position: fixed;
-    left: 50vw;
     bottom: 5%;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     opacity: 0;
     pointer-events: none;
     z-index: 10;
     transform: none;
 }
-
-.paw-trail-1, .paw-trail-3, .paw-trail-5 { left: 52vw; }
-.paw-trail-2, .paw-trail-4 { left: 48vw; }
-
-.paw-trail-1 { bottom: 5%; animation: walk-paw-1 1.2s 0s both; }
-.paw-trail-2 { bottom: 14%; animation: walk-paw-2 1.2s 0.15s both; }
-.paw-trail-3 { bottom: 23%; animation: walk-paw-3 1.2s 0.3s both; }
-.paw-trail-4 { bottom: 32%; animation: walk-paw-4 1.2s 0.45s both; }
-.paw-trail-5 { bottom: 41%; animation: walk-paw-5 1.2s 0.6s both; }
 
 .paw-trail .paw-pad {
     position: absolute;
@@ -337,32 +262,6 @@ body.index-page {
     right: -8%;
 }
 
-/* 5個分の歩くアニメーション（歩幅・移動量・遅延は大きめのまま） */
-@keyframes walk-paw-1 {
-    0% { opacity: 0; transform: translateX(0px) translateY(0); }
-    10% { opacity: 1; }
-    100% { opacity: 0; transform: translateX(0px) translateY(-250px); }
-}
-@keyframes walk-paw-2 {
-    0% { opacity: 0; transform: translateX(0px) translateY(0); }
-    10% { opacity: 1; }
-    100% { opacity: 0; transform: translateX(0px) translateY(-200px); }
-}
-@keyframes walk-paw-3 {
-    0% { opacity: 0; transform: translateX(0px) translateY(0); }
-    10% { opacity: 1; }
-    100% { opacity: 0; transform: translateX(0px) translateY(-150px); }
-}
-@keyframes walk-paw-4 {
-    0% { opacity: 0; transform: translateX(0px) translateY(0); }
-    10% { opacity: 1; }
-    100% { opacity: 0; transform: translateX(0px) translateY(-100px); }
-}
-@keyframes walk-paw-5 {
-    0% { opacity: 0; transform: translateX(0px) translateY(0); }
-    10% { opacity: 1; }
-    100% { opacity: 0; transform: translateX(0px) translateY(-50px); }
-}
 
 @media (max-width: 540px) {
     .title-entry-top {
@@ -385,13 +284,18 @@ body.index-page {
     }
 
     .paw {
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
     }
 
     .paw-second {
-        width: 64px;
-        height: 64px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .paw-trail {
+        width: 20px;
+        height: 20px;
     }
 
 }

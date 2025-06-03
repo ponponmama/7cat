@@ -4,73 +4,88 @@ document.addEventListener('DOMContentLoaded', () => {
     const paw1 = document.querySelector('.paw');
     const paw2 = document.querySelector('.paw-second');
     const pawTrails = [
-        document.querySelector('.paw-trail-1'),
-        document.querySelector('.paw-trail-2'),
-        document.querySelector('.paw-trail-3'),
-        document.querySelector('.paw-trail-4'),
-        document.querySelector('.paw-trail-5'),
+        document.getElementById('paw-trail-1'),
+        document.getElementById('paw-trail-2'),
+        document.getElementById('paw-trail-3'),
+        document.getElementById('paw-trail-4'),
+        document.getElementById('paw-trail-5'),
+        document.getElementById('paw-trail-6'),
+        document.getElementById('paw-trail-7'),
+        document.getElementById('paw-trail-8'),
     ];
     const testBtn = document.getElementById('paw-test-btn');
     let animationInterval = null;
     let isTitleActive = false;
     let isPawActive = false;
     let pawActiveType = null; // 'left', 'right', または null
+    let step = 0;
+    let isAnimating = false;  // アニメーション中かどうかのフラグ
 
-    // 5つの足跡要素を取得
+    // 8つの足跡要素を取得
     pawTrails.forEach((paw, i) => {
         paw.style.opacity = 0;
         paw.style.animation = 'none';
         paw.classList.remove(`paw-trail-${i+1}`);
     });
 
-    function playPawAnimation() {
-        // すべての足跡を一旦非表示＆アニメーションリセット
-        pawTrails.forEach((paw, i) => {
-            paw.style.opacity = 0;
-            paw.style.animation = 'none';
-            paw.classList.remove(`paw-trail-${i+1}`);
+    // アニメーションの定義
+    const animations = [
+        { translateY: '-100px' },
+        { translateY: '-200px' },
+        { translateY: '-300px' },
+        { translateY: '-400px' },
+        { translateY: '-500px' },
+        { translateY: '-600px' },
+        { translateY: '-700px' },
+        { translateY: '-800px' }
+    ];
+
+    // 足跡の表示位置リスト（8歩分）
+    const positions = [
+        { left: '53vw', bottom: '5%' },
+        { left: '47vw', bottom: '10%' },
+        { left: '53vw', bottom: '15%' },
+        { left: '47vw', bottom: '20%' },
+        { left: '53vw', bottom: '25%' },
+        { left: '47vw', bottom: '30%' },
+        { left: '53vw', bottom: '35%' },
+        { left: '47vw', bottom: '40%' },
+    ];
+
+    function showNextPaw() {
+        if (!isAnimating) return;
+
+        const paw = pawTrails[step];
+        const pos = positions[step];
+        const anim = animations[step];
+
+        // 位置とアニメーションを設定
+        paw.style.left = pos.left;
+        paw.style.bottom = pos.bottom;
+        paw.style.opacity = '1';
+
+        // アニメーションを適用
+        paw.animate([
+            { opacity: 1, transform: 'translateX(0px) translateY(0)' },
+            { opacity: 0, transform: `translateX(0px) ${anim.translateY}` }
+        ], {
+            duration: 1000,
+            easing: 'ease-in-out',
+            fill: 'forwards'
         });
 
-        // 足跡を順番に表示
-        let currentIndex = 0;
-        const showNextPaw = () => {
-            if (currentIndex < pawTrails.length) {
-                // 前の足跡を非表示
-                if (currentIndex > 0) {
-                    const prevPaw = pawTrails[currentIndex - 1];
-                    prevPaw.style.opacity = 0;
-                    prevPaw.style.animation = 'none';
-                    prevPaw.classList.remove(`paw-trail-${currentIndex}`);
-                }
-
-                // 現在の足跡を表示
-                const currentPaw = pawTrails[currentIndex];
-                currentPaw.style.opacity = 1;
-                currentPaw.style.animation = 'none';
-                currentPaw.classList.remove(`paw-trail-${currentIndex + 1}`);
-                void currentPaw.offsetWidth;
-                currentPaw.classList.add(`paw-trail-${currentIndex + 1}`);
-
-                currentIndex++;
-                setTimeout(showNextPaw, 600);
-            } else {
-                // 最後の足跡も一定時間後に消す
-                setTimeout(() => {
-                    const lastPaw = pawTrails[pawTrails.length - 1];
-                    lastPaw.style.opacity = 0;
-                    lastPaw.style.animation = 'none';
-                    lastPaw.classList.remove(`paw-trail-${pawTrails.length}`);
-                }, 600);
-            }
-        };
-
-        // 最初の足跡から表示開始
-        showNextPaw();
+        step++;
+        if (step < positions.length) {
+            setTimeout(showNextPaw, 800);
+        } else {
+            isAnimating = false;
+            step = 0;
+        }
     }
 
     // ボタン押下時に再生
     if (testBtn) {
-        testBtn.addEventListener('click', playPawAnimation);
+        testBtn.addEventListener('click', showNextPaw);
     }
 
     // 足跡のアニメーションを開始する関数
@@ -81,27 +96,112 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1つ目の足跡のアニメーションを開始
         pawTrails[0].style.left = `${paw2Rect.left - rect.left}px`;
         pawTrails[0].style.top = `${paw2Rect.top - rect.top}px`;
-        pawTrails[0].style.animation = 'none';
-        void pawTrails[0].offsetWidth;
-        pawTrails[0].style.animation = 'pawTrail1 2s ease-in-out forwards';
+        pawTrails[0].animate([
+            { opacity: 1, transform: 'translateX(0px) translateY(0)' },
+            { opacity: 0, transform: 'translateX(0px) translateY(-100px)' }
+        ], {
+            duration: 8000,
+            easing: 'ease-in-out',
+            fill: 'forwards'
+        });
 
         // 2つ目の足跡のアニメーションを開始
         setTimeout(() => {
             pawTrails[1].style.left = `${paw2Rect.left - rect.left}px`;
             pawTrails[1].style.top = `${paw2Rect.top - rect.top}px`;
-            pawTrails[1].style.animation = 'none';
-            void pawTrails[1].offsetWidth;
-            pawTrails[1].style.animation = 'pawTrail2 2s ease-in-out forwards';
+            pawTrails[1].animate([
+                { opacity: 1, transform: 'translateX(0px) translateY(0)' },
+                { opacity: 0, transform: 'translateX(0px) translateY(-200px)' }
+            ], {
+                duration: 8000,
+                easing: 'ease-in-out',
+                fill: 'forwards'
+            });
 
             // 3つ目の足跡のアニメーションを開始
             setTimeout(() => {
                 pawTrails[2].style.left = `${paw2Rect.left - rect.left}px`;
                 pawTrails[2].style.top = `${paw2Rect.top - rect.top}px`;
-                pawTrails[2].style.animation = 'none';
-                void pawTrails[2].offsetWidth;
-                pawTrails[2].style.animation = 'pawTrail3 2s ease-in-out forwards';
-            }, 1000);
-        }, 1000);
+                pawTrails[2].animate([
+                    { opacity: 1, transform: 'translateX(0px) translateY(0)' },
+                    { opacity: 0, transform: 'translateX(0px) translateY(-300px)' }
+                ], {
+                    duration: 8000,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                });
+
+                // 4つ目の足跡のアニメーションを開始
+                setTimeout(() => {
+                    pawTrails[3].style.left = `${paw2Rect.left - rect.left}px`;
+                    pawTrails[3].style.top = `${paw2Rect.top - rect.top}px`;
+                    pawTrails[3].animate([
+                        { opacity: 1, transform: 'translateX(0px) translateY(0)' },
+                        { opacity: 0, transform: 'translateX(0px) translateY(-400px)' }
+                    ], {
+                        duration: 8000,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
+
+                    // 5つ目の足跡のアニメーションを開始
+                    setTimeout(() => {
+                        pawTrails[4].style.left = `${paw2Rect.left - rect.left}px`;
+                        pawTrails[4].style.top = `${paw2Rect.top - rect.top}px`;
+                        pawTrails[4].animate([
+                            { opacity: 1, transform: 'translateX(0px) translateY(0)' },
+                            { opacity: 0, transform: 'translateX(0px) translateY(-500px)' }
+                        ], {
+                            duration: 8000,
+                            easing: 'ease-in-out',
+                            fill: 'forwards'
+                        });
+
+                        // 6つ目の足跡のアニメーションを開始
+                        setTimeout(() => {
+                            pawTrails[5].style.left = `${paw2Rect.left - rect.left}px`;
+                            pawTrails[5].style.top = `${paw2Rect.top - rect.top}px`;
+                            pawTrails[5].animate([
+                                { opacity: 1, transform: 'translateX(0px) translateY(0)' },
+                                { opacity: 0, transform: 'translateX(0px) translateY(-600px)' }
+                            ], {
+                                duration: 8000,
+                                easing: 'ease-in-out',
+                                fill: 'forwards'
+                            });
+
+                            // 7つ目の足跡のアニメーションを開始
+                            setTimeout(() => {
+                                pawTrails[6].style.left = `${paw2Rect.left - rect.left}px`;
+                                pawTrails[6].style.top = `${paw2Rect.top - rect.top}px`;
+                                pawTrails[6].animate([
+                                    { opacity: 1, transform: 'translateX(0px) translateY(0)' },
+                                    { opacity: 0, transform: 'translateX(0px) translateY(-700px)' }
+                                ], {
+                                    duration: 8000,
+                                    easing: 'ease-in-out',
+                                    fill: 'forwards'
+                                });
+
+                                // 8つ目の足跡のアニメーションを開始
+                                setTimeout(() => {
+                                    pawTrails[7].style.left = `${paw2Rect.left - rect.left}px`;
+                                    pawTrails[7].style.top = `${paw2Rect.top - rect.top}px`;
+                                    pawTrails[7].animate([
+                                        { opacity: 1, transform: 'translateX(0px) translateY(0)' },
+                                        { opacity: 0, transform: 'translateX(0px) translateY(-800px)' }
+                                    ], {
+                                        duration: 8000,
+                                        easing: 'ease-in-out',
+                                        fill: 'forwards'
+                                    });
+                                }, 2000);
+                            }, 2000);
+                        }, 2000);
+                    }, 2000);
+                }, 2000);
+            }, 2000);
+        }, 2000);
     }
 
     // マウス移動時の処理
@@ -164,33 +264,107 @@ document.addEventListener('DOMContentLoaded', () => {
         const paw2Distance = Math.hypot(mouseX - paw2CenterX, mouseY - paw2CenterY);
         const pawActiveRange = 50; // px
 
-        // 肉球1の制御
-        if (paw1Distance < pawActiveRange) {
-            paw1.style.animation = 'float1 3s ease-in-out infinite, shake1 0.5s ease-in-out infinite';
-            const baseOpacity = 0.2;
-            const hoverOpacity = 0.6;
-            const opacity = baseOpacity + (hoverOpacity - baseOpacity) * (1 - paw1Distance / pawActiveRange);
-            paw1.style.opacity = opacity;
-        } else {
-            paw1.style.animation = 'float1 3s ease-in-out infinite';
-            paw1.style.opacity = 0.2;
-        }
+        // 肉球のアニメーション定義
+        const floatAnimation = [
+            { transform: 'translateY(0)' },
+            { transform: 'translateY(-15px)' },
+            { transform: 'translateY(0)' }
+        ];
 
-        // 肉球2の制御
-        if (paw2Distance < pawActiveRange) {
-            paw2.style.animation = 'float2 3s ease-in-out infinite, shake2 0.5s ease-in-out infinite';
-            const baseOpacity = 0.2;
-            const hoverOpacity = 0.6;
-            const opacity = baseOpacity + (hoverOpacity - baseOpacity) * (1 - paw2Distance / pawActiveRange);
-            paw2.style.opacity = opacity;
+        const shakeAnimation = [
+            { transform: 'translateX(0)' },
+            { transform: 'translateX(-2px)' },
+            { transform: 'translateX(2px)' },
+            { transform: 'translateX(-2px)' },
+            { transform: 'translateX(0)' }
+        ];
+
+        // 現在実行中のアニメーションを保持
+        let currentPaw1Animations = [];
+        let currentPaw2Animations = [];
+
+        // 足跡アニメーション中は肉球のアニメーションを無効化
+        if (!isAnimating) {
+            // 肉球1の制御
+            if (paw1Distance < pawActiveRange && paw2Distance >= pawActiveRange) {
+                const baseOpacity = 0.2;
+                const hoverOpacity = 0.6;
+                const opacity = baseOpacity + (hoverOpacity - baseOpacity) * (1 - paw1Distance / pawActiveRange);
+                paw1.style.opacity = opacity;
+
+                // 既存のアニメーションを停止
+                currentPaw1Animations.forEach(anim => anim.cancel());
+                currentPaw1Animations = [];
+
+                // 浮遊アニメーション
+                currentPaw1Animations.push(paw1.animate(floatAnimation, {
+                    duration: 3000,
+                    iterations: Infinity,
+                    easing: 'ease-in-out'
+                }));
+
+                // シェイクアニメーション
+                currentPaw1Animations.push(paw1.animate(shakeAnimation, {
+                    duration: 500,
+                    iterations: Infinity,
+                    easing: 'ease-in-out'
+                }));
+
+                // 肉球2のアニメーションを停止
+                currentPaw2Animations.forEach(anim => anim.cancel());
+                currentPaw2Animations = [];
+                paw2.style.opacity = 0.2;
+            } else if (paw2Distance < pawActiveRange && paw1Distance >= pawActiveRange) {
+                // 肉球1のアニメーションを停止
+                currentPaw1Animations.forEach(anim => anim.cancel());
+                currentPaw1Animations = [];
+                paw1.style.opacity = 0.2;
+
+                const baseOpacity = 0.2;
+                const hoverOpacity = 0.6;
+                const opacity = baseOpacity + (hoverOpacity - baseOpacity) * (1 - paw2Distance / pawActiveRange);
+                paw2.style.opacity = opacity;
+
+                // 既存のアニメーションを停止
+                currentPaw2Animations.forEach(anim => anim.cancel());
+                currentPaw2Animations = [];
+
+                // 浮遊アニメーション
+                currentPaw2Animations.push(paw2.animate(floatAnimation, {
+                    duration: 3000,
+                    iterations: Infinity,
+                    easing: 'ease-in-out',
+                    delay: 1500
+                }));
+
+                // シェイクアニメーション
+                currentPaw2Animations.push(paw2.animate(shakeAnimation, {
+                    duration: 500,
+                    iterations: Infinity,
+                    easing: 'ease-in-out'
+                }));
+            } else {
+                // 両方のアニメーションを停止
+                currentPaw1Animations.forEach(anim => anim.cancel());
+                currentPaw2Animations.forEach(anim => anim.cancel());
+                currentPaw1Animations = [];
+                currentPaw2Animations = [];
+                paw1.style.opacity = 0.2;
+                paw2.style.opacity = 0.2;
+            }
         } else {
-            paw2.style.animation = 'float2 3s ease-in-out infinite';
+            // 足跡アニメーション中は両方の肉球のアニメーションを停止
+            currentPaw1Animations.forEach(anim => anim.cancel());
+            currentPaw2Animations.forEach(anim => anim.cancel());
+            currentPaw1Animations = [];
+            currentPaw2Animations = [];
+            paw1.style.opacity = 0.2;
             paw2.style.opacity = 0.2;
         }
 
         // 足跡アニメーション管理
         if (paw1Distance < pawActiveRange) {
-            if (pawActiveType !== 'left') {
+            if (pawActiveType !== 'left' && !isAnimating) {
                 clearInterval(animationInterval);
                 animationInterval = null;
                 pawTrails.forEach((paw, i) => {
@@ -198,12 +372,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     paw.style.animation = 'none';
                     paw.classList.remove(`paw-trail-${i+1}`);
                 });
-                playPawAnimation();
-                animationInterval = setInterval(playPawAnimation, 3000);
+                step = 0;  // ステップをリセット
+                isAnimating = true;  // アニメーション開始
+                showNextPaw();
                 pawActiveType = 'left';
             }
         } else if (paw2Distance < pawActiveRange) {
-            if (pawActiveType !== 'right') {
+            if (pawActiveType !== 'right' && !isAnimating) {
                 clearInterval(animationInterval);
                 animationInterval = null;
                 pawTrails.forEach((paw, i) => {
@@ -211,8 +386,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     paw.style.animation = 'none';
                     paw.classList.remove(`paw-trail-${i+1}`);
                 });
-                playPawAnimation();
-                animationInterval = setInterval(playPawAnimation, 3000);
+                step = 0;  // ステップをリセット
+                isAnimating = true;  // アニメーション開始
+                showNextPaw();
                 pawActiveType = 'right';
             }
         } else {
@@ -224,6 +400,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     paw.style.animation = 'none';
                     paw.classList.remove(`paw-trail-${i+1}`);
                 });
+                isAnimating = false;  // アニメーション停止
+                step = 0;  // ステップをリセット
                 pawActiveType = null;
             }
         }

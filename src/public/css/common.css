@@ -6,10 +6,6 @@ html, body {
     padding: 0;
 }
 
-body {
-    font-family: 'Zen Kurenaido', sans-serif;
-}
-
 .header-section {
     position: fixed;
     top: 0;
