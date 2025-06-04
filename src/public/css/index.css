@@ -9,13 +9,6 @@
     --mouse-y: 50%;
 }
 
-/* indexページ用のスクロール制御 */
-html.index-page,
-body.index-page {
-    overflow: hidden;
-    height: 100%;
-}
-
 /* 画面全体の光る丸 */
 .container::before {
     content: '';
@@ -162,11 +155,11 @@ body.index-page {
 
 /* 右側の肉球 */
 .paw-second {
-    position: fixed;
+    position: relative;
     bottom: 20%;
-    right: 20%;
-    width: 100px;
-    height: 100px;
+    right: -20%;
+    width: 90px;
+    height: 110px;
     opacity: 0.2;
 }
 
