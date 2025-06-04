@@ -38,6 +38,9 @@
                     <a class="nav-menu-link" href="/views/about.php">About</a>
                 </li>
                 <li class="nav-menu-item">
+                    <a class="nav-menu-link" href="/views/works.php">Works</a>
+                </li>
+                <li class="nav-menu-item">
                     <a class="nav-menu-link" href="/views/contact.php">Contact</a>
                 </li>
             </ul>
