@@ -456,14 +456,6 @@ document.addEventListener('DOMContentLoaded', () => {
         title.style.setProperty('--mouse-y', '50%');
     });
 
-    if (document.fonts) {
-        document.fonts.ready.then(function () {
-            document.body.classList.add('fonts-loaded');
-        });
-    } else {
-        // 古いブラウザ用
-        window.onload = function () {
-            document.body.classList.add('fonts-loaded');
-        };
-    }
+    // スクロールを無効化
+    document.body.style.overflow = 'hidden';
 });

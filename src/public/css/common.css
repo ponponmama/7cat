@@ -6,8 +6,14 @@ html, body {
     padding: 0;
 }
 
-body { visibility: hidden; }
-body.fonts-loaded { visibility: visible; }
+/* フォント読み込み制御 */
+html {
+    visibility: hidden;
+}
+
+html.fonts-loaded {
+    visibility: visible;
+}
 
 .header-section {
     position: fixed;
@@ -19,6 +25,7 @@ body.fonts-loaded { visibility: visible; }
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     font-family: 'Alex Brush', cursive;
+    isolation: isolate;
 }
 
 .nav-menu {
@@ -42,7 +49,7 @@ body.fonts-loaded { visibility: visible; }
 .nav-menu-link {
     color: aliceblue;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.2rem;
     transition: color 0.3s ease;
     pointer-events: auto;
     cursor: pointer;
@@ -59,7 +66,6 @@ body.fonts-loaded { visibility: visible; }
     justify-content: flex-start;
     align-items: flex-start;
     position: relative;
-    padding-top: 75px; /* ヘッダーの高さ分のパディング */
     background-color: black;
 }
 
