@@ -5,59 +5,69 @@
         </p>
 
         <div class="works-grid">
+            <!-- 作品カード1 -->
             <div class="work-card">
                 <div class="work-image">
-                    <img src="/images/html_img/html_img.png" alt="ランディングページ" class="work-thumb">
-                </div>
-                <!-- モーダル本体（ページ下部に1つだけ設置） -->
-                <div id="image-modal" class="modal" style="display:none;">
-                    <span class="modal-close" onclick="closeModal()">&times;</span>
-                    <img class="modal-content" id="modal-img">
+                    <a class="work-link" href="#" onclick="openModal('/images/html_img/html_img.png'); return false;">
+                        <img src="/images/html_img/html_img.png" alt="HTML/CSS練習作品1" class="work-thumb">
+                    </a>
                 </div>
                 <div class="work-content">
+                    <h3 class="work-title">HTML/CSS練習作品1</h3>
                     <p class="work-description">
-                        HTMLとCSSの練習として作成したランディングページです。レスポンシブデザインを意識して作成しました。
+                        HTMLとCSSの学習過程で作成したWebページです。レスポンシブデザインの基礎を学びながら制作しました。
                     </p>
                     <div class="work-links-section">
-                        <a class="work-link" href="#" onclick="openModal('/images/html_img/html_img.png'); return false;">イメージを拡大</a>
                         <a class="work-icon-link-button" href="https://github.com/ponponmama/20231016_hara_html.git" target="_blank" rel="noopener noreferrer">
-                        <img class="work-icon" src="https://img.shields.io/badge/-Github-181717.svg?logo=github&style=plastic" alt="GitHub">
-                        <span class="info-text">githubへはこちらから</span>
-                            </a>
+                            <img class="work-icon" src="https://img.shields.io/badge/-Github-181717.svg?logo=github&style=plastic" alt="GitHub">
+                            <span class="info-text">githubへはこちらから</span>
+                        </a>
                     </div>
-                </div>
-                <div class="work-tags">
-                    <span class="work-tag">HTML</span>
-                    <span class="work-tag">CSS</span>
-                    <span class="work-tag">レスポンシブデザイン</span>
+                    <div class="work-tags">
+                        <span class="work-tag">HTML</span>
+                        <span class="work-tag">CSS</span>
+                        <span class="work-tag">レスポンシブデザイン</span>
+                    </div>
                 </div>
             </div>
 
             <!-- 作品カード2 -->
             <div class="work-card">
                 <div class="work-image">
-                    <img class="sample-image" src="/images/works/work2.jpg" alt="作品1のスクリーンショット">
+                    <a class="work-link" href="#" onclick="openModal('/images/lp/lp_1.png'); return false;">
+                        <img src="/images/lp/lp_1.png" alt="HTML/CSS練習作品2" class="work-thumb">
+                    </a>
                 </div>
                 <div class="work-content">
-                    <h3 class="work-title">作品タイトル2</h3>
+                    <h3 class="work-title">HTML/CSS練習作品2</h3>
                     <p class="work-description">
-                        作品の説明文をここに記載します。
+                        HTMLとCSSの学習過程で作成した二つ目のWebページです。こちらもレスポンシブデザインの基礎を学びながら制作しました。
                     </p>
-                    <div class="work-icon-links">
-                        <a href="https://github.com/ponponamama/repo2" target="_blank" rel="noopener noreferrer" class="work-icon-link">
-                            <img src="https://img.shields.io/badge/-Github-181717.svg?logo=github&style=plastic" alt="GitHub">
-                        </a>
-                        <a href="https://demo-url2.com" target="_blank" rel="noopener noreferrer" class="work-icon-link">
-                            <img src="https://img.shields.io/badge/-Demo-000000.svg?style=plastic" alt="デモ">
+                    <div class="work-links-section">
+                        <a class="work-icon-link-button" href="https://github.com/ponponmama/20231016_hara_html.git" target="_blank" rel="noopener noreferrer">
+                            <img class="work-icon" src="https://img.shields.io/badge/-Github-181717.svg?logo=github&style=plastic" alt="GitHub">
+                            <span class="info-text">githubへはこちらから</span>
                         </a>
                     </div>
                     <div class="work-tags">
-                        <span class="work-tag">React</span>
-                        <span class="work-tag">TypeScript</span>
-                        <span class="work-tag">Node.js</span>
+                        <span class="work-tag">HTML</span>
+                        <span class="work-tag">CSS</span>
+                        <span class="work-tag">レスポンシブデザイン</span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- モーダル -->
+        <div id="imageModal" class="modal">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-navigation">
+                <button class="modal-nav-btn prev-btn" onclick="prevImage()">❮</button>
+                <img class="modal-content" id="modalImage">
+                <button class="modal-nav-btn next-btn" onclick="nextImage()">❯</button>
+            </div>
+        </div>
+
         <script src="/js/works.js"></script>
     </div>
+

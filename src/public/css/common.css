@@ -59,7 +59,6 @@ html.fonts-loaded {
     color: rgb(193, 245, 193);
 }
 
-
 .container {
     min-height: 100vh;
     display: flex;
@@ -67,6 +66,7 @@ html.fonts-loaded {
     align-items: flex-start;
     position: relative;
     background-color: black;
+    padding-top: 60px;
 }
 
 @media (max-width: 412px) {

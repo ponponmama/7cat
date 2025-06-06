@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" class="<?php echo isset($body_class) ? $body_class : ''; ?>">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,13 @@
     <link rel="stylesheet" href="/css/common.css">
     <!-- ページ固有のスタイルシート -->
     <?php if (isset($page_css)): ?>
-    <link rel="stylesheet" href="/css/<?php echo $page_css; ?>">
+        <?php if (is_array($page_css)): ?>
+            <?php foreach ($page_css as $css): ?>
+                <link rel="stylesheet" href="/css/<?php echo $css; ?>">
+            <?php endforeach; ?>
+        <?php else: ?>
+            <link rel="stylesheet" href="/css/<?php echo $page_css; ?>">
+        <?php endif; ?>
     <?php endif; ?>
     <!-- 共通のJavaScript -->
     <script src="/js/app.js"></script>
@@ -24,7 +30,7 @@
     <?php endif; ?>
 </head>
 
-<body class="common-body">
+<body class="common-body <?php echo isset($body_class) ? $body_class : ''; ?>">
     <header class="header-section">
         <div class="nav-menu" id="nav">
             <ul class="nav-menu-list">
