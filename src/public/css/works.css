@@ -12,21 +12,21 @@
     font-family: 'Zen Kurenaido', sans-serif;
 }
 
-.works-title,
 .section-title {
     font-family: 'Alex Brush', cursive;
 }
 
-.works-title {
-    font-size: 2rem;
-    text-align: center;
+.works-guide {
+    text-align: left;
+    margin-bottom: 2rem;
+    width: 60%;
     margin: 2% auto;
-    font-weight: 300;
 }
 
-.works-subtitle {
+.image-note {
+    display: block;
     text-align: center;
-    margin-bottom: 1.5rem;
+    font-weight: bold;
 }
 
 .works-grid {
@@ -300,3 +300,14 @@
     }
 }
 
+@media (max-width: 768px) {
+    .works-subtitle {
+        font-size: 0.8rem;
+    }
+}
+
+.image-note {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}

@@ -69,8 +69,21 @@ html.fonts-loaded {
     padding-top: 60px;
 }
 
+.page-title {
+    font-family: 'Alex Brush', cursive;
+    font-size: 2rem;
+    text-align: center;
+    margin: 2% auto;
+    font-weight: 300;
+}
+
 @media (max-width: 412px) {
     .nav-menu-link {
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 768px) {
+    .page-title {
         font-size: 1.5rem;
     }
 }
