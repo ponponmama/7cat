@@ -8,3 +8,4 @@ cspell.json
 .vscode
 cspell.json
 .cspell
+src/config/mail.php
