@@ -1,0 +1,67 @@
+
+.container {
+    background: rgb(251, 250, 252);
+}
+
+.container-inner {
+    width: 90%;
+    padding: 1%;
+    max-width: 1200px;
+    margin: 5% auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(193, 245, 193);
+    border-radius: 10px;
+    padding: 5%;
+    margin: 2% auto;
+}
+
+.form-group {
+    width: 100%;
+    display: flex;
+    margin: 1%;
+}
+
+.form-label {
+    width: 30%;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-input,
+.form-textarea {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid rgb(193, 245, 193);
+    border-radius: 5px;
+}
+
+.form-textarea {
+    height: 150px;
+}
+
+.form-button {
+    padding: 4px 10px;
+    border: 1px solid rgb(2, 248, 2);
+    border-radius: 6px;
+    background-color: rgb(193, 245, 193);
+    color: /*aliceblue*/rgb(2, 248, 2);
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    margin: 5% auto;
+}
+
+
