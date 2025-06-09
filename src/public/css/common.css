@@ -29,7 +29,7 @@ html.fonts-loaded {
 }
 
 .nav-menu {
-    padding: 4% 2%;
+    padding: 2%;
 }
 
 .nav-menu-list {
@@ -65,7 +65,7 @@ html.fonts-loaded {
     justify-content: flex-start;
     align-items: flex-start;
     position: relative;
-    background-color: black;
+    background-color: aliceblue;
     padding-top: 60px;
 }
 

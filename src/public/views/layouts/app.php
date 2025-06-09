@@ -10,17 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Zen+Kurenaido&display=swap" rel="stylesheet">
     <!-- 共通のスタイルシート -->
-    <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/common.css">
     <!-- ページ固有のスタイルシート -->
     <?php if (isset($page_css)): ?>
-        <?php if (is_array($page_css)): ?>
-            <?php foreach ($page_css as $css): ?>
-                <link rel="stylesheet" href="/css/<?php echo $css; ?>">
-            <?php endforeach; ?>
-        <?php else: ?>
-            <link rel="stylesheet" href="/css/<?php echo $page_css; ?>">
-        <?php endif; ?>
+    <?php if (is_array($page_css)): ?>
+    <?php foreach ($page_css as $css): ?>
+    <link rel="stylesheet" href="/css/<?php echo $css; ?>">
+    <?php endforeach; ?>
+    <?php else: ?>
+    <link rel="stylesheet" href="/css/<?php echo $page_css; ?>">
+    <?php endif; ?>
     <?php endif; ?>
     <!-- 共通のJavaScript -->
     <script src="/js/app.js"></script>
