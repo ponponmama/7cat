@@ -385,7 +385,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 既存のアニメーションを停止
                 currentPaw1Animations.forEach(anim => {
                     anim.cancel();
-                    anim.finish();
                 });
                 currentPaw1Animations = [];
 
@@ -413,7 +412,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 肉球2のアニメーションを停止
                 currentPaw2Animations.forEach(anim => {
                     anim.cancel();
-                    anim.finish();
                 });
                 currentPaw2Animations = [];
                 paw2.style.opacity = '0.7';  // 透明度を0.7に設定
@@ -430,7 +428,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 肉球1のアニメーションを停止
                 currentPaw1Animations.forEach(anim => {
                     anim.cancel();
-                    anim.finish();
                 });
                 currentPaw1Animations = [];
                 paw1.style.opacity = '0.7';  // 透明度を0.7に設定
@@ -452,7 +449,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 既存のアニメーションを停止
                 currentPaw2Animations.forEach(anim => {
                     anim.cancel();
-                    anim.finish();
                 });
                 currentPaw2Animations = [];
 
@@ -482,7 +478,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 既存のアニメーションを停止
                     currentAnimations.forEach(anim => {
                         anim.cancel();
-                        anim.finish();
                     });
                     currentAnimations = [];
 
@@ -518,11 +513,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // 足跡アニメーション中は両方の肉球のアニメーションを停止
             currentPaw1Animations.forEach(anim => {
                 anim.cancel();
-                anim.finish();
             });
             currentPaw2Animations.forEach(anim => {
                 anim.cancel();
-                anim.finish();
             });
             currentPaw1Animations = [];
             currentPaw2Animations = [];
