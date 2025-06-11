@@ -23,6 +23,11 @@
     <?php endif; ?>
     <!-- 共通のJavaScript -->
     <script src="/js/app.js"></script>
+    <?php if (isset($js_vars)): ?>
+    <script>
+        const js_vars = <?php echo json_encode($js_vars); ?>;
+    </script>
+    <?php endif; ?>
     <!-- ページ固有のJavaScript -->
     <?php if (isset($page_js)): ?>
     <script src="<?php echo $page_js; ?>"></script>
