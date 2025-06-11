@@ -6,20 +6,9 @@ $page_title = 'Contact';
 $page_css = 'contact.css';
 
 // エラーメッセージの設定
-$error_message = '';
-if (isset($_GET['error'])) {
-    switch ($_GET['error']) {
-        case 'empty_fields':
-            $error_message = 'すべての項目を入力してください。';
-            break;
-        case 'invalid_email':
-            $error_message = '有効なメールアドレスを入力してください。';
-            break;
-        case 'send_failed':
-            $error_message = 'メールの送信に失敗しました。時間をおいて再度お試しください。';
-            break;
-    }
-}
+$error = $_GET['error'] ?? '';
+$error_message = $_GET['message'] ?? '';
+$success = $_GET['success'] ?? false;
 
 // 成功メッセージの設定
 $success_message = '';

@@ -37,6 +37,12 @@ try {
     $mail->Port = getenv('MAIL_PORT');
     $mail->CharSet = 'UTF-8';
 
+    // デバッグモードを有効化
+    $mail->SMTPDebug = 2;
+    $mail->Debugoutput = function($str, $level) {
+        error_log("PHPMailer Debug: $str");
+    };
+
     // 送信元と送信先の設定
     $mail->setFrom(getenv('MAIL_FROM_ADDRESS'), getenv('MAIL_FROM_NAME'));
     $mail->addAddress(getenv('MAIL_FROM_ADDRESS'));
@@ -56,6 +62,7 @@ try {
     $mail->send();
     header('Location: /views/contact.php?success=true');
 } catch (Exception $e) {
-    header('Location: /views/contact.php?error=send_failed');
+    error_log("Mail Error: " . $e->getMessage());
+    header('Location: /views/contact.php?error=send_failed&message=' . urlencode($e->getMessage()));
 }
 exit;
