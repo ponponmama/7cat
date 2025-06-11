@@ -2,6 +2,11 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php';
+
 // POSTデータの取得
 $name = $_POST['name'] ?? '';
 $email = $_POST['email'] ?? '';
@@ -18,22 +23,39 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// メールの設定
-$to = '7cat_engineer@gmail.com';
-$subject = 'ポートフォリオサイトからのお問い合わせ';
-$headers = "From: {$email}\r\n";
-$headers .= "Reply-To: {$email}\r\n";
-$headers .= "X-Mailer: PHP/" . phpversion();
+// PHPMailerの設定
+$mail = new PHPMailer(true);
 
-// メール本文の作成
-$email_content = "名前: {$name}\n";
-$email_content .= "メールアドレス: {$email}\n\n";
-$email_content .= "メッセージ:\n{$message}";
+try {
+    // サーバーの設定
+    $mail->isSMTP();
+    $mail->Host = getenv('MAIL_HOST');
+    $mail->SMTPAuth = true;
+    $mail->Username = getenv('MAIL_USERNAME');
+    $mail->Password = getenv('MAIL_PASSWORD');
+    $mail->SMTPSecure = getenv('MAIL_ENCRYPTION');
+    $mail->Port = getenv('MAIL_PORT');
+    $mail->CharSet = 'UTF-8';
 
-// メール送信
-if (mail($to, $subject, $email_content, $headers)) {
+    // 送信元と送信先の設定
+    $mail->setFrom(getenv('MAIL_FROM_ADDRESS'), getenv('MAIL_FROM_NAME'));
+    $mail->addAddress(getenv('MAIL_FROM_ADDRESS'));
+    $mail->addReplyTo($email, $name);
+
+    // メールの内容
+    $mail->isHTML(true);
+    $mail->Subject = 'ポートフォリオサイトからのお問い合わせ';
+    $mail->Body = "
+        <h2>お問い合わせ内容</h2>
+        <p><strong>名前:</strong> {$name}</p>
+        <p><strong>メールアドレス:</strong> {$email}</p>
+        <p><strong>メッセージ:</strong></p>
+        <p>" . nl2br(htmlspecialchars($message)) . "</p>
+    ";
+
+    $mail->send();
     header('Location: /views/contact.php?success=true');
-} else {
+} catch (Exception $e) {
     header('Location: /views/contact.php?error=send_failed');
 }
 exit;
