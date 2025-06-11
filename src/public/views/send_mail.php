@@ -7,6 +7,13 @@ use PHPMailer\PHPMailer\Exception;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
+// 環境変数の確認
+error_log("MAIL_HOST: " . getenv('MAIL_HOST'));
+error_log("MAIL_USERNAME: " . getenv('MAIL_USERNAME'));
+error_log("MAIL_PASSWORD: " . getenv('MAIL_PASSWORD'));
+error_log("MAIL_FROM_ADDRESS: " . getenv('MAIL_FROM_ADDRESS'));
+error_log("MAIL_FROM_NAME: " . getenv('MAIL_FROM_NAME'));
+
 // POSTデータの取得
 $name = $_POST['name'] ?? '';
 $email = $_POST['email'] ?? '';
@@ -44,8 +51,15 @@ try {
     };
 
     // 送信元と送信先の設定
-    $mail->setFrom(getenv('MAIL_FROM_ADDRESS'), getenv('MAIL_FROM_NAME'));
-    $mail->addAddress(getenv('MAIL_FROM_ADDRESS'));
+    $from_address = getenv('MAIL_FROM_ADDRESS');
+    $from_name = getenv('MAIL_FROM_NAME');
+
+    if (empty($from_address) || empty($from_name)) {
+        throw new Exception('送信元のメールアドレスまたは名前が設定されていません。');
+    }
+
+    $mail->setFrom($from_address, $from_name);
+    $mail->addAddress($from_address);
     $mail->addReplyTo($email, $name);
 
     // メールの内容
