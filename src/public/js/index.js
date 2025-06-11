@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 浮遊アニメーションの定義
     const floatAnimation = [
         { transform: 'translateY(0)' },
-        { transform: 'translateY(-15px)' },
+        { transform: 'translateY(0)' },
         { transform: 'translateY(0)' }
     ];
 
@@ -33,28 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPaw1Animations = [];
     let currentPaw2Animations = [];
 
-    // ページ読み込み時に肉球のアニメーションを開始
+    // ページ読み込み時に肉球の表示を設定
     const startInitialAnimations = () => {
-        // 肉球1の浮遊アニメーションを開始
-        paw1.style.opacity = '0.7';  // 透明度を0.7に設定
-        currentPaw1Animations.push(paw1.animate(floatAnimation, {
-            duration: 3000,
-            iterations: Infinity,
-            easing: 'ease-in-out'
-        }));
+        // 肉球1の表示設定
+        paw1.style.opacity = '0.7';
+        paw1.style.transform = 'translateY(0)';
 
-        // 肉球2の浮遊アニメーションを開始（1500ミリ秒の遅延付き）
-        setTimeout(() => {
-            paw2.style.opacity = '0.7';  // 透明度を0.7に設定
-            currentPaw2Animations.push(paw2.animate(floatAnimation, {
-                duration: 3000,
-                iterations: Infinity,
-                easing: 'ease-in-out'
-            }));
-        }, 1500);
+        // 肉球2の表示設定
+        paw2.style.opacity = '0.7';
+        paw2.style.transform = 'translateY(0)';
     };
 
-    // 初期アニメーションを開始
+    // 初期表示を設定
     startInitialAnimations();
 
     // 8つの足跡要素を取得
@@ -280,12 +270,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // マウス移動時の処理
     document.addEventListener('mousemove', (e) => {
-        // どんな場合でもまず光る〇の位置を更新
-        const rect = container.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        container.style.setProperty('--mouse-x', `${x}%`);
-        container.style.setProperty('--mouse-y', `${y}%`);
+        // マウスカーソルの光る効果を無効化
+        // const rect = container.getBoundingClientRect();
+        // const x = ((e.clientX - rect.left) / rect.width) * 100;
+        // const y = ((e.clientY - rect.top) / rect.height) * 100;
+        // container.style.setProperty('--mouse-x', `${x}%`);
+        // container.style.setProperty('--mouse-y', `${y}%`);
 
         const nav = document.querySelector('#nav');
         if (nav && nav.contains(e.target)) {
@@ -313,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ) {
             if (!isAnimating) {
                 // 色変化（黄色→元色→赤→青）
-                const ratio = x / 100;
+                const ratio = mouseX / titleRect.width;
                 let r, g, b;
                 if (ratio < 1/3) {
                     // 黄色→元色
@@ -365,10 +355,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 肉球のアニメーション定義
         const shakeAnimation = [
             { transform: 'translateX(0)' },
-            { transform: 'translateX(-3px)' },
-            { transform: 'translateX(3px)' },
-            { transform: 'translateX(-2px)' },
-            { transform: 'translateX(2px)' },
+            { transform: 'translateX(0)' },
+            { transform: 'translateX(0)' },
+            { transform: 'translateX(0)' },
+            { transform: 'translateX(0)' },
             { transform: 'translateX(0)' }
         ];
 
@@ -376,138 +366,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isAnimating) {
             // 肉球1の制御
             if (paw1Distance < pawActiveRange && paw2Distance >= pawActiveRange) {
-                const baseOpacity = 0.7;  // 透明度を0.7に設定
+                const baseOpacity = 0.7;
                 const hoverOpacity = 1.0;
                 const distanceRatio = paw1Distance / pawActiveRange;
                 const opacity = baseOpacity + (hoverOpacity - baseOpacity) * (1 - distanceRatio);
                 paw1.style.opacity = opacity;
-
-                // 既存のアニメーションを停止
-                currentPaw1Animations.forEach(anim => {
-                    anim.cancel();
-                });
-                currentPaw1Animations = [];
-
-                // 現在の位置を取得
-                const currentTransform = window.getComputedStyle(paw1).transform;
-                const matrix = new DOMMatrix(currentTransform);
-                const currentY = matrix.m42;
-
-                // シェイクアニメーションを開始（現在の位置から）
-                const shakeAnimationWithOffset = {
-                    ...shakeAnimation,
-                    transform: [
-                        `translateY(${currentY}px) translateX(-2px)`,
-                        `translateY(${currentY}px) translateX(2px)`,
-                        `translateY(${currentY}px) translateX(-2px)`
-                    ]
-                };
-
-                currentPaw1Animations.push(paw1.animate(shakeAnimationWithOffset, {
-                    duration: 300,
-                    iterations: 7,
-                    easing: 'ease-in-out'
-                }));
-
-                // 肉球2のアニメーションを停止
-                currentPaw2Animations.forEach(anim => {
-                    anim.cancel();
-                });
-                currentPaw2Animations = [];
-                paw2.style.opacity = '0.7';  // 透明度を0.7に設定
-                paw2.style.transform = 'translateY(0)';
-
-                // 肉球2の浮遊アニメーションを開始
-                currentPaw2Animations.push(paw2.animate(floatAnimation, {
-                    duration: 3000,
-                    iterations: Infinity,
-                    easing: 'ease-in-out',
-                    delay: 1500
-                }));
-            } else if (paw2Distance < pawActiveRange && paw1Distance >= pawActiveRange) {
-                // 肉球1のアニメーションを停止
-                currentPaw1Animations.forEach(anim => {
-                    anim.cancel();
-                });
-                currentPaw1Animations = [];
-                paw1.style.opacity = '0.7';  // 透明度を0.7に設定
                 paw1.style.transform = 'translateY(0)';
 
-                // 肉球1の浮遊アニメーションを開始
-                currentPaw1Animations.push(paw1.animate(floatAnimation, {
-                    duration: 3000,
-                    iterations: Infinity,
-                    easing: 'ease-in-out'
-                }));
+                // 肉球2の表示設定
+                paw2.style.opacity = '0.7';
+                paw2.style.transform = 'translateY(0)';
+            } else if (paw2Distance < pawActiveRange && paw1Distance >= pawActiveRange) {
+                // 肉球1の表示設定
+                paw1.style.opacity = '0.7';
+                paw1.style.transform = 'translateY(0)';
 
-                const baseOpacity = 0.7;  // 透明度を0.7に設定
+                const baseOpacity = 0.7;
                 const hoverOpacity = 1.0;
                 const distanceRatio = paw2Distance / pawActiveRange;
                 const opacity = baseOpacity + (hoverOpacity - baseOpacity) * (1 - distanceRatio);
                 paw2.style.opacity = opacity;
-
-                // 既存のアニメーションを停止
-                currentPaw2Animations.forEach(anim => {
-                    anim.cancel();
-                });
-                currentPaw2Animations = [];
-
-                // 現在の位置を取得
-                const currentTransform = window.getComputedStyle(paw2).transform;
-                const matrix = new DOMMatrix(currentTransform);
-                const currentY = matrix.m42;
-
-                // シェイクアニメーションを開始（現在の位置から）
-                const shakeAnimationWithOffset = {
-                    ...shakeAnimation,
-                    transform: [
-                        `translateY(${currentY}px) translateX(-2px)`,
-                        `translateY(${currentY}px) translateX(2px)`,
-                        `translateY(${currentY}px) translateX(-2px)`
-                    ]
-                };
-
-                currentPaw2Animations.push(paw2.animate(shakeAnimationWithOffset, {
-                    duration: 300,
-                    iterations: 7,
-                    easing: 'ease-in-out'
-                }));
+                paw2.style.transform = 'translateY(0)';
             } else {
-                // 両方の肉球に浮遊アニメーションのみを適用
-                const resetAnimation = async (paw, currentAnimations) => {
-                    // 既存のアニメーションを停止
-                    currentAnimations.forEach(anim => {
-                        anim.cancel();
-                    });
-                    currentAnimations = [];
-
-                    // 肉球の位置をリセット
-                    paw.style.transform = 'translateY(0)';
-
-                    // 300ミリ秒待機
-                    await new Promise(resolve => setTimeout(resolve, 300));
-
-                    // 浮遊アニメーションを開始
-                    return [paw.animate(floatAnimation, {
-                        duration: 3000,
-                        iterations: Infinity,
-                        easing: 'ease-in-out'
-                    })];
-                };
-
-                // 肉球1のアニメーションをリセット
-                resetAnimation(paw1, currentPaw1Animations).then(animations => {
-                    currentPaw1Animations = animations;
-                    paw1.style.opacity = '0.7';  // 透明度を0.7に設定
-                });
-
-                // 肉球2のアニメーションをリセット（1500ミリ秒の遅延付き）
-                setTimeout(() => {
-                    resetAnimation(paw2, currentPaw2Animations).then(animations => {
-                        currentPaw2Animations = animations;
-                        paw2.style.opacity = '0.7';  // 透明度を0.7に設定
-                    });
-                }, 1500);
+                // 両方の肉球の表示設定
+                paw1.style.opacity = '0.7';
+                paw1.style.transform = 'translateY(0)';
+                paw2.style.opacity = '0.7';
+                paw2.style.transform = 'translateY(0)';
             }
         } else {
             // 足跡アニメーション中は両方の肉球のアニメーションを停止
@@ -569,8 +454,9 @@ document.addEventListener('DOMContentLoaded', () => {
     title.addEventListener('mouseleave', () => {
         title.style.color = 'rgb(0, 6, 12)';
         title.style.textShadow = '0 0 10px rgba(0, 6, 12, 0.8)';
-        title.style.setProperty('--mouse-x', '50%');
-        title.style.setProperty('--mouse-y', '50%');
+        // マウスカーソルの光る効果を無効化
+        // title.style.setProperty('--mouse-x', '50%');
+        // title.style.setProperty('--mouse-y', '50%');
     });
 
     // スクロールを無効化
