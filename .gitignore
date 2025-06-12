@@ -9,3 +9,5 @@ cspell.json
 cspell.json
 .cspell
 src/config/mail.php
+docker-compose.yml
+docker/nginx/default.conf
