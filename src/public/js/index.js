@@ -268,26 +268,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000);
     }
 
-    // マウス移動時の処理
-    document.addEventListener('mousemove', (e) => {
-        // マウスカーソルの光る効果を無効化
-        // const rect = container.getBoundingClientRect();
-        // const x = ((e.clientX - rect.left) / rect.width) * 100;
-        // const y = ((e.clientY - rect.top) / rect.height) * 100;
-        // container.style.setProperty('--mouse-x', `${x}%`);
-        // container.style.setProperty('--mouse-y', `${y}%`);
-
-        const nav = document.querySelector('#nav');
-        if (nav && nav.contains(e.target)) {
-            title.style.color = 'rgb(0, 6, 12)';
-            title.style.textShadow = '0 0 10px rgba(1, 2, 27, 0.8)';
-            isTitleActive = false;
-            return;
-        }
-
-        // タイトルの色を常に変化させる
+    // タイトルの色を更新する関数
+    function updateTitleColor() {
         if (!isAnimating) {
-            const titleRect = title.getBoundingClientRect();
             const ratio = (Date.now() % 3000) / 3000; // 3秒周期で色を変化
             let r, g, b;
             if (ratio < 1/3) {
@@ -317,6 +300,21 @@ document.addEventListener('DOMContentLoaded', () => {
             title.style.color = 'rgb(0, 6, 12)';
             title.style.textShadow = '0 0 10px rgba(0, 6, 12, 0.8)';
             isTitleActive = false;
+        }
+        requestAnimationFrame(updateTitleColor);
+    }
+
+    // 色の更新を開始
+    updateTitleColor();
+
+    // マウス移動時の処理
+    document.addEventListener('mousemove', (e) => {
+        const nav = document.querySelector('#nav');
+        if (nav && nav.contains(e.target)) {
+            title.style.color = 'rgb(0, 6, 12)';
+            title.style.textShadow = '0 0 10px rgba(1, 2, 27, 0.8)';
+            isTitleActive = false;
+            return;
         }
 
         // 肉球の位置を取得
@@ -432,9 +430,6 @@ document.addEventListener('DOMContentLoaded', () => {
     title.addEventListener('mouseleave', () => {
         title.style.color = 'rgb(0, 6, 12)';
         title.style.textShadow = '0 0 10px rgba(0, 6, 12, 0.8)';
-        // マウスカーソルの光る効果を無効化
-        // title.style.setProperty('--mouse-x', '50%');
-        // title.style.setProperty('--mouse-y', '50%');
     });
 
     // スクロールを無効化
