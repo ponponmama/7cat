@@ -284,61 +284,39 @@ document.addEventListener('DOMContentLoaded', () => {
             isTitleActive = false;
             return;
         }
-        const titleRect = title.getBoundingClientRect();
 
-        // タイトルの中心座標
-        const titleCenterX = titleRect.left + titleRect.width / 2;
-        const titleCenterY = titleRect.top + titleRect.height / 2;
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        const titleDistance = Math.hypot(mouseX - titleCenterX, mouseY - titleCenterY);
-        const titleActiveRange = 60; // px
-
-        // タイトルの矩形範囲で判定
-        if (
-            mouseX >= titleRect.left &&
-            mouseX <= titleRect.right &&
-            mouseY >= titleRect.top &&
-            mouseY <= titleRect.bottom
-        ) {
-            if (!isAnimating) {
-                // 色変化（黄色→元色→赤→青）
-                const ratio = mouseX / titleRect.width;
-                let r, g, b;
-                if (ratio < 1/3) {
-                    // 黄色→元色
-                    const t = ratio / (1/3);
-                    r = Math.round(220 + (0 - 220) * t);    // 黄色(220,180,40) → 元色(0,6,12)
-                    g = Math.round(180 + (6 - 180) * t);
-                    b = Math.round(40 + (12 - 40) * t);
-                } else if (ratio < 2/3) {
-                    // 元色→赤
-                    const t = (ratio - 1/3) / (1/3);
-                    r = Math.round(0 + (200 - 0) * t);      // 元色(0,6,12) → 赤(200,40,40)
-                    g = Math.round(6 + (40 - 6) * t);
-                    b = Math.round(12 + (40 - 12) * t);
-                } else {
-                    // 赤→青
-                    const t = (ratio - 2/3) / (1/3);
-                    r = Math.round(200 + (0 - 200) * t);    // 赤(200,40,40) → 青(0,60,180)
-                    g = Math.round(40 + (60 - 40) * t);
-                    b = Math.round(40 + (180 - 40) * t);
-                }
-                title.style.color = `rgb(${r}, ${g}, ${b})`;
-                title.style.textShadow = `0 0 10px rgba(${r}, ${g}, ${b}, 1.0)`;
-                isTitleActive = true;
+        // タイトルの色を常に変化させる
+        if (!isAnimating) {
+            const titleRect = title.getBoundingClientRect();
+            const ratio = (Date.now() % 3000) / 3000; // 3秒周期で色を変化
+            let r, g, b;
+            if (ratio < 1/3) {
+                // 黄色→元色
+                const t = ratio / (1/3);
+                r = Math.round(220 + (0 - 220) * t);    // 黄色(220,180,40) → 元色(0,6,12)
+                g = Math.round(180 + (6 - 180) * t);
+                b = Math.round(40 + (12 - 40) * t);
+            } else if (ratio < 2/3) {
+                // 元色→赤
+                const t = (ratio - 1/3) / (1/3);
+                r = Math.round(0 + (200 - 0) * t);      // 元色(0,6,12) → 赤(200,40,40)
+                g = Math.round(6 + (40 - 6) * t);
+                b = Math.round(12 + (40 - 12) * t);
             } else {
-                // アニメーション中はデフォルト色
-                title.style.color = 'rgb(0, 6, 12)';
-                title.style.textShadow = '0 0 10px rgba(0, 6, 12, 0.8)';
-                isTitleActive = false;
+                // 赤→青
+                const t = (ratio - 2/3) / (1/3);
+                r = Math.round(200 + (0 - 200) * t);    // 赤(200,40,40) → 青(0,60,180)
+                g = Math.round(40 + (60 - 40) * t);
+                b = Math.round(40 + (180 - 40) * t);
             }
+            title.style.color = `rgb(${r}, ${g}, ${b})`;
+            title.style.textShadow = `0 0 10px rgba(${r}, ${g}, ${b}, 1.0)`;
+            isTitleActive = true;
         } else {
-            if (isTitleActive) {
-                title.style.color = 'rgb(0, 6, 12)';
-                title.style.textShadow = '0 0 10px rgba(0, 6, 12, 0.8)';
-                isTitleActive = false;
-            }
+            // アニメーション中はデフォルト色
+            title.style.color = 'rgb(0, 6, 12)';
+            title.style.textShadow = '0 0 10px rgba(0, 6, 12, 0.8)';
+            isTitleActive = false;
         }
 
         // 肉球の位置を取得
@@ -348,8 +326,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const paw1CenterY = paw1Rect.top + paw1Rect.height / 2;
         const paw2CenterX = paw2Rect.left + paw2Rect.width / 2;
         const paw2CenterY = paw2Rect.top + paw2Rect.height / 2;
-        const paw1Distance = Math.hypot(mouseX - paw1CenterX, mouseY - paw1CenterY);
-        const paw2Distance = Math.hypot(mouseX - paw2CenterX, mouseY - paw2CenterY);
+        const paw1Distance = Math.hypot(e.clientX - paw1CenterX, e.clientY - paw1CenterY);
+        const paw2Distance = Math.hypot(e.clientX - paw2CenterX, e.clientY - paw2CenterY);
         const pawActiveRange = 50; // px
 
         // 肉球のアニメーション定義
