@@ -4,25 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7cat</title>
+    <title>Erika Hara's Portfolio</title>
     <!-- フォントの読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Zen+Kurenaido&display=swap" rel="stylesheet">
     <!-- 共通のスタイルシート -->
-    <link rel="stylesheet" href="/css/common.css">
-    <!-- 各ページのスタイルシート -->
     <link rel="stylesheet" href="/css/portfolio.css">
+    <!-- 各ページのスタイルシート -->
+    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/about.css">
     <link rel="stylesheet" href="/css/works.css">
     <link rel="stylesheet" href="/css/contact.css">
     <!-- 共通のJavaScript -->
-    <script src="/js/app.js"></script>
+    <script src="/js/portfolio.js"></script>
 </head>
 
 <body class="common-body">
     <header class=" header-section">
-        <p class="header-logo">Erika Hara</p>
         <div class="nav-menu" id="nav">
             <ul class="nav-menu-list">
                 <li class="nav-menu-item">
@@ -42,29 +41,27 @@
     </header>
     <main class="container">
         <!-- Home Section -->
-        <section id="home">
-            <iframe src="/views/index.html" frameborder="0" style="width: 100%; height: 100vh;"></iframe>
+        <section class="page-section" id="home">
+            <?php include __DIR__.'/../parts/index.html'; ?>
         </section>
 
         <!-- Works Section -->
-        <section id="works">
-            <iframe src="/views/works.html" frameborder="0" style="width: 100%; height: 100vh;"></iframe>
+        <section class="page-section" id="works">
+            <?php include __DIR__.'/../parts/works.html'; ?>
         </section>
 
         <!-- About Section -->
-        <section id="about">
-            <iframe src="/views/about.html" frameborder="0" style="width: 100%; height: 100vh;"></iframe>
+        <section class="page-section" id="about">
+            <?php include __DIR__.'/../parts/about.html'; ?>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact">
-            <iframe src="/views/contact.html" frameborder="0" style="width: 100%; height: 100vh;"></iframe>
+        <section class="page-section" id="contact">
+            <?php include __DIR__.'/../parts/contact.html'; ?>
         </section>
     </main>
 
     <!-- JavaScriptファイルの読み込み -->
-    <script src="/js/portfolio.js"></script>
-    <script src="/js/index.js"></script>
     <script src="/js/works.js"></script>
     <script src="/js/contact.js"></script>
     </main>

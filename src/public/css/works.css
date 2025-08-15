@@ -1,8 +1,4 @@
-.container {
-    background: rgb(251, 250, 252);
-}
-
-.container-inner {
+.works-section {
     max-width: 1200px;
     margin: 0 auto;
     padding: 5%;

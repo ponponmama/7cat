@@ -23,6 +23,6 @@ $js_vars = [
     'success_message' => $success_message
 ];
 
-$content = __DIR__ . '/contact.html';
-include __DIR__ . '/layouts/app.php';
+$content = __DIR__ . '/parts/contact.html';
+include __DIR__ . '/layouts/portfolio.php';
 ?>
