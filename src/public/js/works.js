@@ -340,10 +340,20 @@ function updateModalImage() {
     console.log('currentImages.length:', currentImages.length);
     console.log('currentImageIndex:', currentImageIndex);
     console.log('現在表示中の画像:', currentImages[currentImageIndex]);
+    console.log('全画像リスト:', currentImages);
 
     if (currentImages.length > 0 && currentImageIndex >= 0 && currentImageIndex < currentImages.length) {
         modalImg.src = currentImages[currentImageIndex];
         console.log('画像を設定:', currentImages[currentImageIndex]);
+
+        // 画像の読み込みエラーを検出
+        modalImg.onerror = function() {
+            console.error('画像の読み込みエラー:', currentImages[currentImageIndex]);
+        };
+
+        modalImg.onload = function() {
+            console.log('画像の読み込み成功:', currentImages[currentImageIndex]);
+        };
 
         // 最初の画像の場合は前へボタンを非表示
         if (currentImageIndex === 0) {
@@ -362,6 +372,7 @@ function updateModalImage() {
         }
     } else {
         console.log('エラー: currentImagesが空か、currentImageIndexが範囲外です');
+        console.log('currentImageIndex:', currentImageIndex, 'currentImages.length:', currentImages.length);
     }
 }
 
