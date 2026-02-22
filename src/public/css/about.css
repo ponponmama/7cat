@@ -1,9 +1,10 @@
 .about-section {
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0 auto;
     padding: 5%;
     color: rgb(0 6 12 / 1);
+    overflow-y: auto;
 }
 
 .section-title {

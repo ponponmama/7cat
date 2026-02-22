@@ -3,8 +3,8 @@
     margin: 0 auto;
     padding: 5%;
     color: black;
-    min-height: 100vh;
-    overflow-y: visible;
+    height: 100%;
+    overflow-y: auto;
     font-family: 'Zen Kurenaido', sans-serif;
 }
 

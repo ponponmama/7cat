@@ -2,12 +2,14 @@
     width: 100%;
     padding: 1%;
     max-width: 1200px;
-    margin: 5% auto;
+    margin: 0 auto;
     padding: 0 20px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
 }
 
 .contact-guide {
