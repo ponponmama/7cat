@@ -256,8 +256,6 @@ let currentImageIndex = 0;
 let currentImages = [];
 
 function openModal(imageSrc) {
-    console.log('openModal called with:', imageSrc);
-
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const modalContent = document.getElementById('modalContent');
@@ -313,23 +311,9 @@ function openModal(imageSrc) {
 
     if (imageSets[folderName]) {
         currentImages = imageSets[folderName];
-        console.log('folderName:', folderName);
-        console.log('imageSets[folderName]:', imageSets[folderName]);
-        console.log('imageSets[folderName].length:', imageSets[folderName].length);
-        console.log('currentImages:', currentImages);
-        console.log('currentImages.length:', currentImages.length);
-        console.log('currentImagesの各要素:');
-        currentImages.forEach((img, idx) => {
-            console.log(`  [${idx}]: ${img}`);
-        });
         const index = currentImages.indexOf(imageSrc);
-        console.log('imageSrc:', imageSrc);
-        console.log('index:', index);
         currentImageIndex = index >= 0 ? index : 0; // 見つからない場合は0を設定
-        console.log('設定後のcurrentImageIndex:', currentImageIndex);
         updateModalImage();
-    } else {
-        console.log('imageSets[folderName]が見つかりません。folderName:', folderName);
     }
 }
 
@@ -343,24 +327,8 @@ function updateModalImage() {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
 
-    console.log('updateModalImage called');
-    console.log('currentImages.length:', currentImages.length);
-    console.log('currentImageIndex:', currentImageIndex);
-    console.log('現在表示中の画像:', currentImages[currentImageIndex]);
-    console.log('全画像リスト:', currentImages);
-
     if (currentImages.length > 0 && currentImageIndex >= 0 && currentImageIndex < currentImages.length) {
         modalImg.src = currentImages[currentImageIndex];
-        console.log('画像を設定:', currentImages[currentImageIndex]);
-
-        // 画像の読み込みエラーを検出
-        modalImg.onerror = function() {
-            console.error('画像の読み込みエラー:', currentImages[currentImageIndex]);
-        };
-
-        modalImg.onload = function() {
-            console.log('画像の読み込み成功:', currentImages[currentImageIndex]);
-        };
 
         // 最初の画像の場合は前へボタンを非表示
         if (currentImageIndex === 0) {
@@ -372,42 +340,23 @@ function updateModalImage() {
         // 最後の画像の場合は次へボタンを非表示
         if (currentImageIndex === currentImages.length - 1) {
             nextBtn.style.display = 'none';
-            console.log('最後の画像です。次へボタンを非表示');
         } else {
             nextBtn.style.display = 'block';
-            console.log('次へボタンを表示。残り:', currentImages.length - currentImageIndex - 1, '枚');
         }
-    } else {
-        console.log('エラー: currentImagesが空か、currentImageIndexが範囲外です');
-        console.log('currentImageIndex:', currentImageIndex, 'currentImages.length:', currentImages.length);
     }
 }
 
 function nextImage() {
-    console.log('nextImage called');
-    console.log('currentImageIndex:', currentImageIndex);
-    console.log('currentImages.length:', currentImages.length);
-    console.log('条件チェック:', currentImageIndex < currentImages.length - 1);
-
     if (currentImages.length > 0 && currentImageIndex < currentImages.length - 1) {
         currentImageIndex = currentImageIndex + 1;
-        console.log('次の画像に移動。新しいindex:', currentImageIndex);
         updateModalImage();
-    } else {
-        console.log('次へボタンが無効です。最後の画像か、画像がありません。');
     }
 }
 
 function prevImage() {
-    console.log('prevImage called');
-    console.log('currentImageIndex:', currentImageIndex);
-
     if (currentImages.length > 0 && currentImageIndex > 0) {
         currentImageIndex = currentImageIndex - 1;
-        console.log('前の画像に移動。新しいindex:', currentImageIndex);
         updateModalImage();
-    } else {
-        console.log('前へボタンが無効です。最初の画像か、画像がありません。');
     }
 }
 
