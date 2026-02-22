@@ -45,13 +45,13 @@ iframe {
     width: 60%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 .nav-menu-list {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     list-style: none;
     margin: 0;
