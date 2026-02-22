@@ -232,7 +232,8 @@
 
 .modal-close {
     position: absolute;
-    top: 30px; right: 40px;
+    top: 20px;
+    right: 20px;
     color: rgb(255 255 255 / 1);
     font-size: 40px;
     font-weight: bold;
