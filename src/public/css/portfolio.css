@@ -93,7 +93,7 @@ iframe {
 .page-section {
     width: 100%;
     height: auto;
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
     position: relative;
 }
 
