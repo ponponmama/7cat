@@ -336,8 +336,14 @@ function updateModalImage() {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
 
+    console.log('updateModalImage called');
+    console.log('currentImages.length:', currentImages.length);
+    console.log('currentImageIndex:', currentImageIndex);
+    console.log('現在表示中の画像:', currentImages[currentImageIndex]);
+
     if (currentImages.length > 0 && currentImageIndex >= 0 && currentImageIndex < currentImages.length) {
         modalImg.src = currentImages[currentImageIndex];
+        console.log('画像を設定:', currentImages[currentImageIndex]);
 
         // 最初の画像の場合は前へボタンを非表示
         if (currentImageIndex === 0) {
@@ -349,9 +355,13 @@ function updateModalImage() {
         // 最後の画像の場合は次へボタンを非表示
         if (currentImageIndex === currentImages.length - 1) {
             nextBtn.style.display = 'none';
+            console.log('最後の画像です。次へボタンを非表示');
         } else {
             nextBtn.style.display = 'block';
+            console.log('次へボタンを表示。残り:', currentImages.length - currentImageIndex - 1, '枚');
         }
+    } else {
+        console.log('エラー: currentImagesが空か、currentImageIndexが範囲外です');
     }
 }
 
