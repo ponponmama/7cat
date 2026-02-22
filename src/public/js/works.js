@@ -63,10 +63,10 @@ const imageSets = {
         '/images/flea_market/purchase_address.png',
     ],
     'rese_users': [
-        '/images/rese/common/register.png',
-        '/images/rese/common/login.png',
-        '/images/rese/common/email_verify.png',
-        '/images/rese/common/thanks.png',
+        '/images/rese/users/register.png',
+        '/images/rese/users/login.png',
+        '/images/rese/users/email_verify.png',
+        '/images/rese/users/thanks.png',
         '/images/rese/users/user_index.png',
         '/images/rese/users/user_mypage.png',
         '/images/rese/users/user_details.png',
@@ -74,7 +74,7 @@ const imageSets = {
         '/images/rese/users/user_reservation_return_details.png',
     ],
     'rese_admin': [
-        '/images/rese/common/login.png',
+        '/images/rese/admin/login.png',
         '/images/rese/admin/admin_dashboard.png',
         '/images/rese/admin/admin_dashboard_modal.png',
         '/images/rese/admin/admin_reviews.png',
@@ -83,7 +83,7 @@ const imageSets = {
         '/images/rese/admin/admin_shops_list_modal.png',
     ],
     'rese_shops': [
-        '/images/rese/common/login.png',
+        '/images/rese/shops/login.png',
         '/images/rese/shops/shop_manager_dashboard.png',
         '/images/rese/shops/shop_manager_dashboard_modal.png',
         '/images/rese/shops/shop_manager_dashboard _reservation.png',
@@ -388,7 +388,7 @@ function nextImage() {
     console.log('currentImageIndex:', currentImageIndex);
     console.log('currentImages.length:', currentImages.length);
     console.log('条件チェック:', currentImageIndex < currentImages.length - 1);
-    
+
     if (currentImages.length > 0 && currentImageIndex < currentImages.length - 1) {
         currentImageIndex = currentImageIndex + 1;
         console.log('次の画像に移動。新しいindex:', currentImageIndex);
@@ -401,7 +401,7 @@ function nextImage() {
 function prevImage() {
     console.log('prevImage called');
     console.log('currentImageIndex:', currentImageIndex);
-    
+
     if (currentImages.length > 0 && currentImageIndex > 0) {
         currentImageIndex = currentImageIndex - 1;
         console.log('前の画像に移動。新しいindex:', currentImageIndex);
