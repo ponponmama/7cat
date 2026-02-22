@@ -9,13 +9,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Zen+Kurenaido&display=swap" rel="stylesheet">
-    <!-- 共通のスタイルシート -->
-    <link rel="stylesheet" href="/css/portfolio.css">
     <!-- 各ページのスタイルシート -->
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/about.css">
     <link rel="stylesheet" href="/css/works.css">
     <link rel="stylesheet" href="/css/contact.css">
+    <!-- 共通のスタイルシート（最後に読み込んでメディアクエリを優先） -->
+    <link rel="stylesheet" href="/css/portfolio.css">
     <!-- 共通のJavaScript -->
     <script src="/js/portfolio.js"></script>
 </head>
