@@ -80,13 +80,13 @@ iframe {
 .container {
     width: 100%;
     height: auto;
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     position: relative;
-    padding-top: 60px;
     flex-direction: column;
+    padding-top: 60px;
     background: rgb(251 250 252 / 1);
 
 }
@@ -94,7 +94,6 @@ iframe {
 .page-section {
     width: 100%;
     height: auto;
-    min-height: calc(100vh - 60px);
     position: relative;
 }
 
