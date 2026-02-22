@@ -114,12 +114,26 @@ iframe {
     .nav-menu-link {
         font-size: 24px;
     }
+
+    .title-entry-top{
+        font-size: 40px;
+    }
+
+    .title-entry-sub{
+        font-size: 20px;
+    }
+    
+    .title-entry-bottom{
+        font-size: 16px;
+    }
+
 }
+
 @media (max-width: 768px) {
     .nav-menu {
         width: 100%;
     }
-    
+
     .page-title {
         font-size: 24px;
     }
