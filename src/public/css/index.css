@@ -44,11 +44,3 @@
     font-weight: 300;
     font-family: 'Zen Kurenaido', sans-serif;
 }
-
-@media (max-width: 1024px) {
-    .title-entry-bottom {
-        padding: 0 15px;
-        width: 70%;
-    }
-
-}
