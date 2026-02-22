@@ -25,6 +25,7 @@ const imageSets = {
         '/images/mogitate/products_search_low_to_high.png',
         '/images/mogitate/products_search_high_to_low.png',
         '/images/mogitate/register.png',
+        '/images/mogitate/delete.png',
         '/images/mogitate/products_search.png'
     ],
     'attendance_users': [
