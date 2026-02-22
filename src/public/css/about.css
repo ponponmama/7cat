@@ -1,6 +1,7 @@
 .about-section {
     width: 100%;
-    height: calc(100vh - 60px);
+    height: 100%;
+    min-height: calc(100vh - 60px);
     margin: 0 auto;
     padding: 30px;
     color: rgb(0 6 12 / 1);
