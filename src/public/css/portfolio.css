@@ -91,10 +91,11 @@ iframe {
 }
 
 .page-section {
-    width: 100%;
+    width: 80%;
     padding-top: 60px;
     height: auto;
     position: relative;
+    margin: 0 auto;
 }
 
 .page-title {
