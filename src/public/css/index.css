@@ -27,6 +27,7 @@
 }
 
 .title-entry-sub {
+    width: 100%;
     color: rgb(0 6 12 / 1);
     font-size: 32px;
     margin: 1% auto;
@@ -35,6 +36,7 @@
 }
 
 .title-entry-bottom {
+    width: 100%;
     color: rgb(0 6 12 / 1);
     font-size: 20px;
     margin: 1% auto;
