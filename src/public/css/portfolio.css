@@ -108,7 +108,17 @@ iframe {
     font-weight: 300;
 }
 
-@media screen and (max-width: 412px) {
+@media (min-width: 413px) and (max-width: 768px) {
+    .nav-menu {
+        width: 100%;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 412px) {
     .nav-menu {
         width: 100%;
     }
@@ -129,15 +139,5 @@ iframe {
         font-size: 16px;
     }
 
-}
-
-@media screen and (min-width: 413px) and (max-width: 768px) {
-    .nav-menu {
-        width: 100%;
-    }
-
-    .page-title {
-        font-size: 24px;
-    }
 }
 
