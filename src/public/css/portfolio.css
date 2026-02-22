@@ -86,13 +86,13 @@ iframe {
     align-items: flex-start;
     position: relative;
     flex-direction: column;
-    padding-top: 60px;
     background: rgb(251 250 252 / 1);
 
 }
 
 .page-section {
     width: 100%;
+    padding-top: 60px;
     height: auto;
     position: relative;
 }
