@@ -107,11 +107,19 @@ iframe {
 }
 
 @media (max-width: 412px) {
+    .nav-menu {
+        width: 100%;
+    }
+
     .nav-menu-link {
         font-size: 24px;
     }
 }
 @media (max-width: 768px) {
+    .nav-menu {
+        width: 100%;
+    }
+    
     .page-title {
         font-size: 24px;
     }
