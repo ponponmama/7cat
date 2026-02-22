@@ -29,7 +29,8 @@ iframe {
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
+    width: 100vw;
+    max-width: 100vw;
     height: 60px;
     z-index: 1000;
     background-color: rgba(0 0 0 / 0.514);
@@ -97,10 +98,11 @@ iframe {
 }
 
 .page-title {
+    width: 100%;
     font-family: 'Alex Brush', cursive;
     font-size: 40px;
     text-align: center;
-    margin: 2% auto;
+    margin: 2% 0;
     font-weight: 300;
 }
 
