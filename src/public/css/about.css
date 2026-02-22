@@ -82,12 +82,12 @@
 
 /* スキルセクション */
 .custom-generator-icons {
-    width: 60%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 2%;
-    margin: 1% auto;
+    margin-bottom: 1%;
 }
 
 .custom-generator-icons img {
