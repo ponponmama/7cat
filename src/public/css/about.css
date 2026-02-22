@@ -21,9 +21,9 @@
 }
 
 .about-inner-section {
-    width: 85%;
+    width: 100%;
     padding: 2%;
-    margin: 1% auto;
+    margin: 1% 0;
 }
 
 .section-title {
