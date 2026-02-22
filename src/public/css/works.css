@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding: 5%;
     color: black;
+    min-height: 100vh;
     font-family: 'Zen Kurenaido', sans-serif;
 }
 

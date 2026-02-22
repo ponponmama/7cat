@@ -4,6 +4,7 @@
     padding: 5%;
     color: rgb(0 6 12 / 1);
     width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
