@@ -314,12 +314,19 @@ function openModal(imageSrc) {
     if (imageSets[folderName]) {
         currentImages = imageSets[folderName];
         console.log('folderName:', folderName);
+        console.log('imageSets[folderName]:', imageSets[folderName]);
+        console.log('imageSets[folderName].length:', imageSets[folderName].length);
         console.log('currentImages:', currentImages);
         console.log('currentImages.length:', currentImages.length);
+        console.log('currentImagesの各要素:');
+        currentImages.forEach((img, idx) => {
+            console.log(`  [${idx}]: ${img}`);
+        });
         const index = currentImages.indexOf(imageSrc);
         console.log('imageSrc:', imageSrc);
         console.log('index:', index);
         currentImageIndex = index >= 0 ? index : 0; // 見つからない場合は0を設定
+        console.log('設定後のcurrentImageIndex:', currentImageIndex);
         updateModalImage();
     } else {
         console.log('imageSets[folderName]が見つかりません。folderName:', folderName);
