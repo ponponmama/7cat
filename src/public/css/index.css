@@ -44,8 +44,9 @@
 }
 
 @media (max-width: 1024px) {
-.title-entry-bottom {
-    padding: 0 15px;
-    width: 70%;
-}
+    .title-entry-bottom {
+        padding: 0 15px;
+        width: 70%;
+    }
 
+}
