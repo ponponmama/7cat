@@ -9,15 +9,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Zen+Kurenaido&display=swap" rel="stylesheet">
-    <!-- 共通のスタイルシート -->
-    <link rel="stylesheet" href="/css/common.css">
     <!-- 各ページのスタイルシート -->
     <link rel="stylesheet" href="/css/portfolio.css">
     <link rel="stylesheet" href="/css/about.css">
     <link rel="stylesheet" href="/css/works.css">
     <link rel="stylesheet" href="/css/contact.css">
-    <!-- 共通のJavaScript -->
-    <script src="/js/app.js"></script>
 </head>
 
 <body class="common-body">
@@ -43,22 +39,22 @@
     <main class="container">
         <!-- Home Section -->
         <section id="home">
-            <iframe src="/views/index.html" frameborder="0" style="width: 100%; height: 100vh;"></iframe>
+            <iframe src="/views/index.html" frameborder="0"></iframe>
         </section>
 
         <!-- Works Section -->
         <section id="works">
-            <iframe src="/views/works.html" frameborder="0" style="width: 100%; height: 100vh;"></iframe>
+            <iframe src="/views/works.html" frameborder="0"></iframe>
         </section>
 
         <!-- About Section -->
         <section id="about">
-            <iframe src="/views/about.html" frameborder="0" style="width: 100%; height: 100vh;"></iframe>
+            <iframe src="/views/about.html" frameborder="0"></iframe>
         </section>
 
         <!-- Contact Section -->
         <section id="contact">
-            <iframe src="/views/contact.html" frameborder="0" style="width: 100%; height: 100vh;"></iframe>
+            <iframe src="/views/contact.html" frameborder="0"></iframe>
         </section>
     </main>
 
