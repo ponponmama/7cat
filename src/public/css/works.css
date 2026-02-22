@@ -1,7 +1,7 @@
 .works-section {
+    width: 100%;
     max-width: 1200px;
     min-height: calc(100vh - 60px);
-    margin: 0 auto;
     padding: 30px;
     color: black;
     font-family: 'Zen Kurenaido', sans-serif;
