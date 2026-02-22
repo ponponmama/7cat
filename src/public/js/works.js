@@ -313,9 +313,16 @@ function openModal(imageSrc) {
 
     if (imageSets[folderName]) {
         currentImages = imageSets[folderName];
+        console.log('folderName:', folderName);
+        console.log('currentImages:', currentImages);
+        console.log('currentImages.length:', currentImages.length);
         const index = currentImages.indexOf(imageSrc);
+        console.log('imageSrc:', imageSrc);
+        console.log('index:', index);
         currentImageIndex = index >= 0 ? index : 0; // 見つからない場合は0を設定
         updateModalImage();
+    } else {
+        console.log('imageSets[folderName]が見つかりません。folderName:', folderName);
     }
 }
 
