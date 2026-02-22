@@ -277,14 +277,6 @@ function openModal(imageSrc) {
         // imageSetsに該当するキーが存在するか確認
         if (imageSets[potentialKey]) {
             folderName = potentialKey;
-        } else if (subFolder === 'common') {
-            // commonフォルダの場合は、その画像が含まれているセットを探す
-            for (const [key, images] of Object.entries(imageSets)) {
-                if (key.startsWith(`${baseFolder}_`) && images.includes(imageSrc)) {
-                    folderName = key;
-                    break;
-                }
-            }
         }
     }
 
