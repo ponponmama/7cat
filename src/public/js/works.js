@@ -377,16 +377,30 @@ function updateModalImage() {
 }
 
 function nextImage() {
+    console.log('nextImage called');
+    console.log('currentImageIndex:', currentImageIndex);
+    console.log('currentImages.length:', currentImages.length);
+    console.log('条件チェック:', currentImageIndex < currentImages.length - 1);
+    
     if (currentImages.length > 0 && currentImageIndex < currentImages.length - 1) {
         currentImageIndex = currentImageIndex + 1;
+        console.log('次の画像に移動。新しいindex:', currentImageIndex);
         updateModalImage();
+    } else {
+        console.log('次へボタンが無効です。最後の画像か、画像がありません。');
     }
 }
 
 function prevImage() {
+    console.log('prevImage called');
+    console.log('currentImageIndex:', currentImageIndex);
+    
     if (currentImages.length > 0 && currentImageIndex > 0) {
         currentImageIndex = currentImageIndex - 1;
+        console.log('前の画像に移動。新しいindex:', currentImageIndex);
         updateModalImage();
+    } else {
+        console.log('前へボタンが無効です。最初の画像か、画像がありません。');
     }
 }
 
