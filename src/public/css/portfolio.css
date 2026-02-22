@@ -118,7 +118,7 @@ iframe {
 @media (max-width: 412px) {
     .nav-menu {
         width: 80%;
-        margin: 0 auto;
+        margin: 0;
     }
 
     .nav-menu-link {
