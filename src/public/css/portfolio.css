@@ -36,7 +36,7 @@ iframe {
     font-family: 'Alex Brush', cursive;
     isolation: isolate;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0 5%;
 }
@@ -51,12 +51,11 @@ iframe {
 
 .nav-menu-list {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 2%;
 }
 
 .nav-menu-item {
