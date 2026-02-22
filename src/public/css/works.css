@@ -14,7 +14,7 @@
 
 .works-guide {
     text-align: left;
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
     width: 60%;
     margin: 2% auto;
 }
@@ -28,14 +28,14 @@
 .works-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    padding: 1rem;
+    gap: 24px;
+    padding: 16px;
 }
 
 .work-card {
     width: 100%;
-    background: rgba(255, 255, 255, 0.781);
-    box-shadow: 4px 4px 10px rgba(2, 1, 36, 0.521);
+    background: rgba(255 255 255 / 0.781);
+    box-shadow: 4px 4px 10px rgba(2 1 36 / 0.521);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background:  rgba(235, 234, 234, 0.432);
+    background:  rgba(235 234 234 / 0.432);
 }
 
 .work-link {
@@ -85,7 +85,7 @@
 
 .work-card-title {
     text-align: center;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 300;
     margin: 3% auto;
 }
@@ -93,18 +93,18 @@
 .work-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 8px;
     margin: auto auto 2%;
     padding: 10px;
     width: 100%;
 }
 
 .work-tag {
-    background: rgba(3, 1, 73, 0.24);
+    background: rgba(3 1 73 / 0.24);
     padding: 2px 10px;
     border-radius: 15px;
-    font-size: 0.8rem;
-    box-shadow: 2px 2px 5px rgba(2, 1, 36, 0.459);
+    font-size: 13px;
+    box-shadow: 2px 2px 5px rgba(2 1 36 / 0.459);
     margin: 1.5%;
 }
 
@@ -118,7 +118,7 @@
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
-    background-color: rgba(150, 148, 148, 0.61);
+    background-color: rgba(150 148 148 / 0.61);
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -140,10 +140,10 @@
     align-items: center;
     width: 100%;
     max-height: 80vh;
-    background: rgba(4, 1, 44, 0.9);
+    background: rgba(4 1 44 / 0.9);
     border-radius: 8px;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
-    padding: 2rem;
+    box-shadow: 0 2px 16px rgba(0 0 0 / 0.3);
+    padding: 32px;
     overflow-y: auto;
 }
 
@@ -164,15 +164,15 @@
 }
 
 .work-title {
-    font-size: 1.2rem;
+    font-size: 19px;
     margin: 2% auto;
 }
 
 .work-description {
     width: 100%;
     margin: 3% auto;
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 16px;
+    line-height: 24px;
     text-align: left;
 }
 
@@ -202,7 +202,7 @@
 }
 
 .work-icon-link-button:hover {
-    background: rgba(255, 255, 255, 0.171);
+    background: rgba(255 255 255 / 0.171);
 }
 
 .work-icon {
@@ -298,7 +298,7 @@
 
 @media (max-width: 768px) {
     .works-subtitle {
-        font-size: 0.8rem;
+        font-size: 13px;
     }
 }
 

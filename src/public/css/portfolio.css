@@ -62,7 +62,7 @@ iframe {
 .nav-menu-link {
     color: rgb(240 248 255 / 1);
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 19px;
     transition: color 0.3s ease;
     pointer-events: auto;
     cursor: pointer;
@@ -94,7 +94,7 @@ iframe {
 
 .page-title {
     font-family: 'Alex Brush', cursive;
-    font-size: 2.5rem;
+    font-size: 40px;
     text-align: center;
     margin: 2% auto;
     font-weight: 300;
@@ -102,11 +102,11 @@ iframe {
 
 @media (max-width: 412px) {
     .nav-menu-link {
-        font-size: 1.5rem;
+        font-size: 24px;
     }
 }
 @media (max-width: 768px) {
     .page-title {
-        font-size: 1.5rem;
+        font-size: 24px;
     }
 }

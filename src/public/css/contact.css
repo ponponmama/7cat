@@ -12,8 +12,8 @@
 
 .contact-guide {
     width: 100%;
-    font-size: 1.2rem;
-    line-height: 1.5rem;
+    font-size: 19px;
+    line-height: 24px;
     text-align: center;
     display: block;
     margin: 5% auto;
@@ -40,8 +40,8 @@
 
 .form-label {
     width: 90%;
-    font-size: 1.2rem;
-    line-height: 1.5rem;
+    font-size: 19px;
+    line-height: 24px;
     display: block;
     margin: 2% auto;
 }
@@ -49,8 +49,8 @@
 .form-input,
 .form-textarea {
     width: 90%;
-    font-size: 1.2rem;
-    line-height: 1.5rem;
+    font-size: 19px;
+    line-height: 24px;
     padding: 1%;
     border: 1px solid rgb(4 247 4 / 1);
     border-radius: 5px;
@@ -67,14 +67,14 @@
     border-radius: 6px;
     background-color: rgb(240 248 255 / 1);
     color: rgb(4 247 4 / 1);
-    font-size: 1.2rem;
-    line-height: 1.5rem;
+    font-size: 19px;
+    line-height: 24px;
     margin: 5% auto;
 }
 
 @media (max-width: 540px) {
     .contact-guide {
-        font-size: 0.9rem;
+        font-size: 14px;
     }
 
     .contact-form {
@@ -83,13 +83,13 @@
 
     .form-label {
         width: 90%;
-        font-size: 0.9rem;
+        font-size: 14px;
 
     }
 
     .form-input,
     .form-textarea {
         width: 90%;
-        font-size: 0.9rem;
+        font-size: 14px;
     }
 }
