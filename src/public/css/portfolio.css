@@ -25,10 +25,8 @@ iframe {
 }
 
 .header-section {
+    width: 100%;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
     height: 60px;
     z-index: 1000;
     background-color: rgba(0 0 0 / 0.514);
@@ -47,7 +45,7 @@ iframe {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 5%;
+    padding: 0 10px;
 }
 
 .nav-menu-list {
