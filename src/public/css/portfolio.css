@@ -3,11 +3,10 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 *, *::before, *::after {
-  box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 /* フォント読み込み制御 */
@@ -41,6 +40,7 @@ iframe {
     justify-content: center;
     align-items: center;
     padding: 0 5%;
+    box-sizing: border-box;
 }
 
 .nav-menu {
