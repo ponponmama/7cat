@@ -29,6 +29,8 @@ iframe {
     top: 0;
     left: 0;
     right: 0;
+    width: 100vw;
+    max-width: 100vw;
     height: 60px;
     z-index: 1000;
     background-color: rgba(0 0 0 / 0.514);
