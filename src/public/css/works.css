@@ -16,7 +16,7 @@
 
 .image-note {
     display: block;
-    text-align: left;
+    text-align: center;
     font-weight: 600;
 }
 
@@ -295,4 +295,9 @@
     .works-subtitle {
         font-size: 13px;
     }
+
+    .image-note {
+    text-align: left;
+}
+
 }
