@@ -24,8 +24,9 @@
 /* プロフィールセクション */
 .profile-content {
     display: flex;
-    gap: 5%;
+    gap: 15px;
     align-items: flex-start;
+    padding: 0 10px;
 }
 
 .profile-image {
