@@ -123,23 +123,24 @@
 }
 
 .skill-categories {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 32px;
 }
 
 .skill-category {
-    width: 70%;
+    width: 100%;
     background-color: rgba(193 245 193 / 0.1);
-    padding: 5%;
+    padding: 20px;
     border-radius: 10px;
     border: 1px solid rgb(4 247 4 / 1);
-    margin: 2% auto;
+    margin: 20px 0;
 }
 
 .skill-category-title {
     font-size: 24px;
-    margin: 1%;
+    margin: 10px;
     color: rgb(0 6 12 / 1);
 }
 
