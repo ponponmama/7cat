@@ -55,25 +55,32 @@
 
 .profile-text-title {
     width: 20%;
-    font-size: 19px;
+    font-size: 20px;
     color: rgb(0 6 12 / 1);
     margin: 0;
+    font-weight: 600;
 }
 
 .profile-text-value {
     width: 80%;
-    font-size: 19px;
+    font-size: 20px;
     margin: 0;
     font-family: 'Zen Kurenaido', sans-serif;
 }
 
 .profile-text-self-introduction {
     flex-direction: column;
+    gap: 1.5%;
 }
 
 .profile-text-self-introduction-title,
 .profile-text-self-introduction-value {
     width: 100%;
+}
+
+.profile-text-self-introduction-value {
+    letter-spacing: 2px;
+    line-height: 24px;
 }
 
 /* スキルセクション */
@@ -146,7 +153,7 @@
     color: rgba(0 0 0 / 0.1);
     letter-spacing: 2px;
     margin-left: 8px;
-    font-size: 1.1em;
+    font-size: 18px;
 }
 .skill-item[data-rate="1"]::after { color: rgb(255 215 0 / 1); content: '★☆☆☆☆'; }
 .skill-item[data-rate="2"]::after { color: rgb(255 215 0 / 1); content: '★★☆☆☆'; }
@@ -182,12 +189,12 @@
 
     .profile-text-title,
     .profile-text-value {
-        font-size: 13px;
+        font-size: 16px;
         text-align: left;
     }
 
     .skill-level-description {
-        font-size: 13px;
+        font-size: 16px;
     }
 
     .skills-content {
