@@ -291,13 +291,8 @@
     }
 }
 
-@media (max-width: 768px) {
-    .works-subtitle {
-        font-size: 13px;
-    }
-
+@media (max-width: 520px) {
     .image-note {
-    text-align: left;
-}
-
+        text-align: left;
+    }
 }
