@@ -197,10 +197,6 @@
         font-size: 16px;
     }
 
-    .skills-content {
-        grid-template-columns: 1fr;
-    }
-
     .skill-category {
         width: 90%;
         padding: 2%;
@@ -235,10 +231,6 @@
     .skill-level-description {
         font-size: 19px;
         line-height: 29px;
-    }
-
-    .skills-content {
-        grid-template-columns: 1fr;
     }
 
     .skill-category {
