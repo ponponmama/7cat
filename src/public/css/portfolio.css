@@ -127,6 +127,10 @@ iframe {
 }
 
 @media (max-width: 412px) {
+    .page-section {
+        width: 90%;
+    }
+
     .nav-menu {
         width: 90%;
         padding: 0;
