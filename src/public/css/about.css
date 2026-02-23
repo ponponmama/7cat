@@ -67,6 +67,15 @@
     font-family: 'Zen Kurenaido', sans-serif;
 }
 
+.profile-text-self-introduction {
+    flex-direction: column;
+}
+
+.profile-text-self-introduction-title,
+.profile-text-self-introduction-value {
+    width: 100%;
+}
+
 /* スキルセクション */
 .custom-generator-icons {
     width: 100%;
