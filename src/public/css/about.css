@@ -17,8 +17,8 @@
 
 .about-inner-section {
     width: 100%;
-    padding: 2%;
-    margin: 1% 0;
+    padding: 20px 0;
+    margin: 20px 0;
 }
 
 /* プロフィールセクション */
@@ -84,6 +84,12 @@
 }
 
 /* スキルセクション */
+.skills-section {
+    width: 100%;
+    padding: 20px 0;
+    margin: 20px 0;
+}
+
 .custom-generator-icons {
     width: 100%;
     display: flex;
