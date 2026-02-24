@@ -116,7 +116,7 @@ iframe {
 }
 
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (max-width: 1024px) {
     .page-section {
         width: 90%;
     }
@@ -142,34 +142,3 @@ iframe {
         font-size: 16px;
     }
 }
-
-@media (max-width: 767px) {
-    .page-section {
-        width: 90%;
-    }
-
-    .nav-menu {
-        width: 90%;
-        padding: 0;
-    }
-
-    .nav-menu-link {
-        font-size: 20px;
-    }
-
-    .title-entry-top{
-        font-size: 40px;
-    }
-
-    .title-entry-sub{
-        font-size: 20px;
-    }
-
-    .title-entry-bottom{
-        width: 90%;
-        font-size: 14px;
-        text-align: left;
-        margin: 10px auto;
-    }
-}
-
