@@ -116,7 +116,7 @@ iframe {
 }
 
 
-@media (max-width: 820px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     .page-section {
         width: 90%;
     }
@@ -139,8 +139,8 @@ iframe {
     }
 
     .title-entry-bottom{
-        width: 60%;
-        font-size: 14px;
+        width: 90%;
+        font-size: 16px;
         text-align: left;
         margin: 0 auto;
     }
