@@ -269,19 +269,19 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 1200px) {
+@media (min-width: 901px) and (max-width: 1200px) {
     .works-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (max-width: 900px) {
+@media (min-width: 601px) and (max-width: 900px) {
     .works-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 541px) and (max-width: 600px) {
     .works-grid {
         grid-template-columns: 1fr;
     }
@@ -292,8 +292,12 @@
     }
 }
 
-@media (max-width: 539px) {
+@media (max-width: 540px) {
     .image-note {
         text-align: left;
+    }
+
+    .works-guide {
+        font-size: 14px;
     }
 }
