@@ -17,17 +17,22 @@
     margin-bottom: 32px;
     width: 100%;
     padding: 10px 20px;
-    font-size: 16px;
-    gap: 20px;
+    gap: 10px;
 }
 
 .works-guide-text,
 .image-note {
     text-align: center;
 }
+.works-guide-text {
+    font-size: 18px;
+    line-height: 24px;
+}
 
 .image-note {
     font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .works-grid {
