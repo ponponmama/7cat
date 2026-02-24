@@ -43,7 +43,7 @@
     font-family: 'Zen Kurenaido', sans-serif;
 }
 
-@media (max-width: 1024px) {
+/*@media (max-width: 1024px) {
     .title-entry-top{
         font-size: 40px;
     }
