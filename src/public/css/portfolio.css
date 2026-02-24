@@ -166,9 +166,10 @@ iframe {
     }
 
     .title-entry-bottom{
+        width: 90%;
         font-size: 14px;
         text-align: left;
-        margin: 0 auto;
+        margin: 10px auto;
     }
 }
 
