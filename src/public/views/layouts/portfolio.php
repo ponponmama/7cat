@@ -25,7 +25,7 @@
         <div class="nav-menu" id="nav">
             <ul class="nav-menu-list">
                 <li class="nav-menu-item">
-                    <a class="nav-menu-link" href="#">Home</a>
+                    <a class="nav-menu-link" href="#home">Home</a>
                 </li>
                 <li class="nav-menu-item">
                     <a class="nav-menu-link" href="#works">Works</a>

@@ -1,82 +1,47 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+/**
+ * お問い合わせフォーム送信（さくらの送信メール / mb_send_mail 使用）
+ * 送信先・送信元はさくらで作成したアドレスにしてください。
+ */
+$to_address = 'postmasteer@7cat.sakura.ne.jp';
+$from_name  = 'Erika Hara（原 絵里加）';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require __DIR__ . '/../../vendor/autoload.php';
-
-// 環境変数の確認
-error_log("MAIL_HOST: " . getenv('MAIL_HOST'));
-error_log("MAIL_USERNAME: " . getenv('MAIL_USERNAME'));
-error_log("MAIL_PASSWORD: " . getenv('MAIL_PASSWORD'));
-error_log("MAIL_FROM_ADDRESS: " . getenv('MAIL_FROM_ADDRESS'));
-error_log("MAIL_FROM_NAME: " . getenv('MAIL_FROM_NAME'));
-
-// POSTデータの取得
-$name = $_POST['name'] ?? '';
-$email = $_POST['email'] ?? '';
-$message = $_POST['message'] ?? '';
+$name    = isset($_POST['name']) ? trim($_POST['name']) : '';
+$email   = isset($_POST['email']) ? trim($_POST['email']) : '';
+$message = isset($_POST['message']) ? trim($_POST['message']) : '';
 
 // バリデーション
-if (empty($name) || empty($email) || empty($message)) {
-    header('Location: /views/contact.php?error=empty_fields');
+if ($name === '' || $email === '' || $message === '') {
+    header('Location: /?error=empty#contact');
     exit;
 }
-
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header('Location: /views/contact.php?error=invalid_email');
+    header('Location: /?error=invalid_email#contact');
     exit;
 }
 
-// PHPMailerの設定
-$mail = new PHPMailer(true);
+mb_language('Japanese');
+mb_internal_encoding('UTF-8');
 
-try {
-    // サーバーの設定
-    $mail->isSMTP();
-    $mail->Host = getenv('MAIL_HOST');
-    $mail->SMTPAuth = true;
-    $mail->Username = getenv('MAIL_USERNAME');
-    $mail->Password = getenv('MAIL_PASSWORD');
-    $mail->SMTPSecure = getenv('MAIL_ENCRYPTION');
-    $mail->Port = getenv('MAIL_PORT');
-    $mail->CharSet = 'UTF-8';
+$subject_owner = 'ポートフォリオサイトからのお問い合わせ';
+$body_owner    = "名前: {$name}\nメールアドレス: {$email}\n\nメッセージ:\n" . $message;
+$headers_owner = "From: {$to_address}\r\nReply-To: {$email}\r\nContent-Type: text/plain; charset=UTF-8";
 
-    // デバッグモードを有効化
-    $mail->SMTPDebug = 2;
-    $mail->Debugoutput = function($str, $level) {
-        error_log("PHPMailer Debug: $str");
-    };
+// 自分あて：お問い合わせ内容
+$sent_owner = mb_send_mail($to_address, $subject_owner, $body_owner, $headers_owner);
 
-    // 送信元と送信先の設定
-    $from_address = getenv('MAIL_FROM_ADDRESS');
-    $from_name = getenv('MAIL_FROM_NAME');
+// 送信者あて：自動返信（シンプル版）
+$subject_reply = '【7cat】お問い合わせを受け付けました';
+$body_reply    = "お問い合わせいただきありがとうございます。\n\n"
+    . "内容を確認のうえ、改めてご連絡いたします。\n少々お待ちください。\n\n"
+    . "※このメールは自動送信です。このメールに返信されても対応できません。\n\n"
+    . "{$from_name}\nhttps://7cat.sakura.ne.jp/";
+$headers_reply = "From: {$to_address}\r\nContent-Type: text/plain; charset=UTF-8";
+$sent_reply    = mb_send_mail($email, $subject_reply, $body_reply, $headers_reply);
 
-    if (empty($from_address) || empty($from_name)) {
-        throw new Exception('送信元のメールアドレスまたは名前が設定されていません。');
-    }
-
-    $mail->setFrom($from_address, $from_name);
-    $mail->addAddress($from_address);
-    $mail->addReplyTo($email, $name);
-
-    // メールの内容
-    $mail->isHTML(true);
-    $mail->Subject = 'ポートフォリオサイトからのお問い合わせ';
-    $mail->Body = "
-        <h2>お問い合わせ内容</h2>
-        <p><strong>名前:</strong> {$name}</p>
-        <p><strong>メールアドレス:</strong> {$email}</p>
-        <p><strong>メッセージ:</strong></p>
-        <p>" . nl2br(htmlspecialchars($message)) . "</p>
-    ";
-
-    $mail->send();
-    header('Location: /views/contact.php?success=true');
-} catch (Exception $e) {
-    error_log("Mail Error: " . $e->getMessage());
-    header('Location: /views/contact.php?error=send_failed&message=' . urlencode($e->getMessage()));
+if ($sent_owner) {
+    header('Location: /?success=1#contact');
+} else {
+    header('Location: /?error=send_failed#contact');
 }
 exit;

@@ -18,6 +18,28 @@
     margin: 5% auto;
 }
 
+.success-message {
+    width: 60%;
+    padding: 12px;
+    margin-bottom: 16px;
+    text-align: center;
+    background-color: rgba(4 247 4 / 0.15);
+    border: 1px solid rgb(4 247 4 / 1);
+    border-radius: 8px;
+    color: rgb(0 6 12 / 1);
+}
+
+.error-message {
+    width: 60%;
+    padding: 12px;
+    margin-bottom: 16px;
+    text-align: center;
+    background-color: rgba(255 0 0 / 0.08);
+    border: 1px solid rgb(200 0 0 / 1);
+    border-radius: 8px;
+    color: rgb(0 6 12 / 1);
+}
+
 .contact-form {
     width: 60%;
     display: flex;

@@ -27,6 +27,9 @@
 .works-guide-text {
     font-size: 20px;
     line-height: 30px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 .image-note {
@@ -307,12 +310,24 @@
 }
 
 @media (max-width: 540px) {
-    .image-note {
-        text-align: left;
-    }
 
-    .works-guide {
-        font-size: 12px;
+
+    .image-note,
+    .works-guide-text {
+        text-justify: inter-character;
+        text-align-last: left;
         padding: 10px;
     }
+
+    .works-guide-text {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 0px;
+    }
+
+    .image-note {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
 }

@@ -1,20 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.contact-form');
-    const guide = document.querySelector('.contact-guide');
+    if (!form) return;
 
-    // PHPから渡されたメッセージを表示
-    if (typeof js_vars !== 'undefined') {
-        if (js_vars.error_message) {
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message';
-            errorDiv.textContent = js_vars.error_message;
-            form.parentNode.insertBefore(errorDiv, form);
-        }
-        if (js_vars.success_message) {
-            const successDiv = document.createElement('div');
-            successDiv.className = 'success-message';
-            successDiv.textContent = js_vars.success_message;
-            form.parentNode.insertBefore(successDiv, form);
-        }
+    const params = new URLSearchParams(window.location.search);
+    const success = params.get('success');
+    const error = params.get('error');
+
+    if (success === '1') {
+        const div = document.createElement('div');
+        div.className = 'success-message';
+        div.textContent = '送信しました。お問い合わせありがとうございます。';
+        form.parentNode.insertBefore(div, form);
+    } else if (error) {
+        const messages = {
+            empty: '名前・メールアドレス・メッセージをすべて入力してください。',
+            invalid_email: '正しいメールアドレスを入力してください。',
+            send_failed: '送信に失敗しました。しばらくしてから再度お試しください。'
+        };
+        const div = document.createElement('div');
+        div.className = 'error-message';
+        div.textContent = messages[error] || 'エラーが発生しました。';
+        form.parentNode.insertBefore(div, form);
     }
 });
