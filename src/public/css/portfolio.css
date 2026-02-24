@@ -115,18 +115,8 @@ iframe {
     color: rgb(0 6 12 / 1)
 }
 
-@media (min-width: 413px) and (max-width: 768px) {
-    .nav-menu {
-        width: 80%;
-    }
 
-    .page-title {
-        font-size: 24px;
-    }
-
-}
-
-@media (max-width: 412px) {
+@media (max-width: 1024px) {
     .page-section {
         width: 90%;
     }
