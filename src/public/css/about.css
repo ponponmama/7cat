@@ -51,7 +51,7 @@
     font-size: 20px;
     color: rgb(0 6 12 / 1);
     margin: 0;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .profile-text-value {
@@ -72,8 +72,13 @@
 }
 
 .profile-text-self-introduction-value {
-    letter-spacing: 1px;
-    line-height: 24px;
+    line-height: 28px;
+    text-align: justify;
+    text-justify: inter-character;
+    text-align-last: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 /* スキルセクション */
@@ -186,13 +191,8 @@
     .profile-text-title,
     .profile-text-value {
         font-size: 21px;
-        text-align: left;
     }
 
-    .skill-level-description {
-        font-size: 19px;
-        line-height: 29px;
-    }
 
     .skill-category {
         width: 90%;
