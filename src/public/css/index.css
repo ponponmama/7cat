@@ -27,7 +27,7 @@
 .title-entry-sub {
     width: 100%;
     color: rgb(0 6 12 / 1);
-    font-size: 36px;
+    font-size: 40px;
     margin: 1% auto;
     text-align: center;
     font-weight: 400;
@@ -41,4 +41,18 @@
     text-align: center;
     font-weight: 300;
     font-family: 'Zen Kurenaido', sans-serif;
+}
+
+@media (max-width: 1024px) {
+    .title-entry-top{
+        font-size: 40px;
+    }
+
+    .title-entry-sub{
+        font-size: 20px;
+    }
+
+    .title-entry-bottom{
+        font-size: 16px;
+    }
 }
