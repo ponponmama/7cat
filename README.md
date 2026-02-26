@@ -1,6 +1,8 @@
 
 <h3 align="center"> Erika Hara's Portfolio </h3>
 
+#### このポートフォリオをご覧いただき、ありがとうございます。何か気になる点やご質問がありましたら、お気軽にお声がけいただけると嬉しいです。
+
 <p align="center">
     <img src="7cat.sakura.ne.jp_html.png">
 </p>
@@ -8,5 +10,3 @@
     <span>works内のアプリ一覧から一部のイメージです</span>
     <img src="7cat.sakura.ne.jp_modal.png">
 </p>
-
-#### このポートフォリオをご覧いただき、ありがとうございます。何か気になる点やご質問がありましたら、お気軽にお声がけいただけると嬉しいです。
