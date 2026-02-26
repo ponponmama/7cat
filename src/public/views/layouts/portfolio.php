@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Search Console 所有権確認用 -->
+    <meta name="google-site-verification" content="G43hE0fzPtfRWIk6aA4gP_bDTBR4T-GlTzOQB_EJ2l8" />
     <title>Erika Hara's Portfolio</title>
     <!-- フォントの読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
