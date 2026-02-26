@@ -5,5 +5,8 @@
     <img src="7cat.sakura.ne.jp_html.png">
 </p>
 <p align="center">
+    <span>works内のアプリ一覧から一部のイメージです</span>
     <img src="7cat.sakura.ne.jp_modal.png">
 </p>
+
+#### このポートフォリオをご覧いただき、ありがとうございます。
