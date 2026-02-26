@@ -111,7 +111,7 @@ const workContents = {
         ]
     },
     'ability': {
-        title: 'お問い合わせフォーム＆管理者ページ',
+        title: 'お問い合わせフォーム＆<br>管理者ページ',
         description: `
             <ul class="work-description-list">
                 <li>お問い合わせフォームと管理者ページです。</li>
@@ -153,7 +153,7 @@ const workContents = {
         ]
     },
     'attendance_users': {
-        title: '勤怠管理システムアプリ(ユーザー機能)',
+        title: '勤怠管理システムアプリ<br>(ユーザー機能)',
         description: `
             <ul class="work-description-list">
                 <li>勤務記録の管理: ユーザーは勤務の開始と終了を記録できます。日を跨ぐ勤務にも対応しています。</li>
@@ -168,7 +168,7 @@ const workContents = {
         ]
     },
     'attendance_admin': {
-        title: '勤怠管理システムアプリ(管理者機能)',
+        title: '勤怠管理システムアプリ<br>(管理者機能)',
         description: `
             <ul class="work-description-list">
                 <li>スタッフ管理機能: スタッフ一覧の確認、スタッフ詳細の確認ができます。</li>
@@ -198,7 +198,7 @@ const workContents = {
         ]
     },
     'rese_users': {
-        title: '飲食店予約サービスアプリ(ユーザー機能)',
+        title: '飲食店予約サービスアプリ<br>(ユーザー機能)',
         description: `
             <ul class="work-description-list">
                 <li>予約変更機能: ユーザーはマイページから予約日時や人数を変更できる。</li>
@@ -216,7 +216,7 @@ const workContents = {
         ]
     },
     'rese_admin': {
-        title: '飲食店予約サービスアプリ(管理者機能)',
+        title: '飲食店予約サービスアプリ<br>(管理者機能)',
         description: `
             <ul class="work-description-list">
                 <li>管理画面: 管理者、店舗代表者、利用者の 3 種類の権限に基づく管理画面を提供。</li>
@@ -235,7 +235,7 @@ const workContents = {
         ]
     },
     'rese_shops': {
-        title: '飲食店予約サービスアプリ(店舗代表者機能)',
+        title: '飲食店予約サービスアプリ<br>(店舗代表者機能)',
         description: `
             <ul class="work-description-list">
                 <li>店舗管理機能: 店舗代表者が自分の店舗情報を編集・管理できる。</li>
@@ -286,7 +286,7 @@ function openModal(imageSrc) {
         // モーダルに内容を表示
         modalContent.innerHTML = `
             <h3 class="work-title">${content.title}</h3>
-            <p class="work-description">${content.description}</p>
+            <div class="work-description">${content.description}</div>
             <div class="work-links-section">
                 ${content.links.map(link => `
                     <a class="work-icon-link-button" href="${link.url}" target="_blank" rel="noopener noreferrer">
