@@ -113,6 +113,12 @@ iframe {
     color: rgb(0 6 12 / 1)
 }
 
+@media (min-width: 540px) and (max-width: 1024px) {
+    .page-section {
+        width: 90%;
+    }
+}
+
 
 @media (max-width: 539px) {
     .page-section {
