@@ -114,7 +114,7 @@
 
 .work-tag {
     background: rgba(3 1 73 / 0.24);
-    padding: 2px 10px;
+    padding: 2px 5px;
     border-radius: 15px;
     font-size: 13px;
     font-weight: 500;
@@ -126,7 +126,7 @@
 
 /* 短〜中: PHP, CSS, HTML, MySQL, Docker, Stripe, Laravel,javascript */
 .work-tag--small {
-    min-width: 5.5em;
+    min-width: 5em;
 }
 
 /* 長い:  レスポンシブデザイン（2列分） */
