@@ -91,23 +91,17 @@
 
 .custom-generator-icons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     column-gap: 10px;
     row-gap: 10px;
     padding: 5px;
     justify-items: left;
 }
 
-.custom-generator-icons img {
-    height: 33px;
-    margin: 5px;
-    flex: 0 1 auto;
-}
-
-@media (min-width: 1025px) {
-    .custom-generator-icons img {
-        margin: 5px 0;
-    }
+.custom-generator-icons .generator-icons {
+    height: 38px;
+    margin: 0;
+    max-width: 100%;
 }
 
 .skills-content {
@@ -258,7 +252,7 @@
         margin: 20px 0;
     }
 
-    .custom-generator-icons img {
+    .custom-generator-icons .generator-icons {
         height: 28px;
     }
 
@@ -311,10 +305,10 @@
     }
 
     .custom-generator-icons {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     }
 
-    .custom-generator-icons img {
+    .custom-generator-icons .generator-icons {
         height: 24px;
     }
 }

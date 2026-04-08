@@ -25,16 +25,22 @@ if (document.fonts) {
 
         var headerHeight = 60;
         var triggerLine = headerHeight + 80;
+        var activeId = '';
+        var sectionOffsets = [];
 
-        function updateCurrentByScroll() {
-            var currentId = sections[0].id;
+        function recomputeSectionOffsets() {
+            sectionOffsets = [];
             for (var i = 0; i < sections.length; i++) {
-                var rect = sections[i].getBoundingClientRect();
-                if (rect.top <= triggerLine && rect.bottom > triggerLine) {
-                    currentId = sections[i].id;
-                    break;
-                }
+                sectionOffsets.push({
+                    id: sections[i].id,
+                    top: sections[i].offsetTop
+                });
             }
+        }
+
+        function setCurrentLink(currentId) {
+            if (currentId === activeId) return;
+            activeId = currentId;
             for (var j = 0; j < navLinks.length; j++) {
                 var href = navLinks[j].getAttribute('href') || '';
                 if (href === '#' + currentId) {
@@ -45,9 +51,68 @@ if (document.fonts) {
             }
         }
 
-        updateCurrentByScroll();
-        window.addEventListener('scroll', updateCurrentByScroll);
-        window.addEventListener('resize', updateCurrentByScroll);
+        function updateCurrentByPosition() {
+            if (!sectionOffsets.length) return;
+            var currentId = sectionOffsets[0].id;
+            var currentY = window.pageYOffset + triggerLine;
+            for (var i = 0; i < sectionOffsets.length; i++) {
+                if (sectionOffsets[i].top <= currentY) {
+                    currentId = sectionOffsets[i].id;
+                } else {
+                    break;
+                }
+            }
+            setCurrentLink(currentId);
+        }
+
+        recomputeSectionOffsets();
+        updateCurrentByPosition();
+
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries) {
+                var bestId = '';
+                var bestDelta = Number.POSITIVE_INFINITY;
+                for (var i = 0; i < entries.length; i++) {
+                    var entry = entries[i];
+                    if (!entry.isIntersecting) continue;
+                    var delta = Math.abs(entry.boundingClientRect.top - triggerLine);
+                    if (delta < bestDelta) {
+                        bestDelta = delta;
+                        bestId = entry.target.id;
+                    }
+                }
+                if (bestId) {
+                    setCurrentLink(bestId);
+                } else {
+                    updateCurrentByPosition();
+                }
+            }, {
+                root: null,
+                rootMargin: (-triggerLine) + 'px 0px -40% 0px',
+                threshold: 0
+            });
+            for (var k = 0; k < sections.length; k++) {
+                observer.observe(sections[k]);
+            }
+            window.addEventListener('resize', function () {
+                recomputeSectionOffsets();
+                updateCurrentByPosition();
+            });
+            window.addEventListener('load', function () {
+                recomputeSectionOffsets();
+                updateCurrentByPosition();
+            });
+        } else {
+            window.addEventListener('scroll', updateCurrentByPosition, { passive: true });
+            window.addEventListener('resize', function () {
+                recomputeSectionOffsets();
+                updateCurrentByPosition();
+            });
+            window.addEventListener('load', function () {
+                recomputeSectionOffsets();
+                updateCurrentByPosition();
+            });
+        }
     }
 
     if (document.readyState === 'loading') {

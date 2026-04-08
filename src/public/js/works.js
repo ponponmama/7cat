@@ -21,12 +21,12 @@ const imageSets = {
         '/images/atte/atte_user-list.png'
     ],
     'mogitate': [
-        '/images/mogitate/products.png',
-        '/images/mogitate/products_search_high_to_low.png',
-        '/images/mogitate/products_search_low_to_high.png',
-        '/images/mogitate/products_register.png',
-        '/images/mogitate/products_detail.png',
-        '/images/mogitate/products_search.png'
+        '/images/mogitate/products.webp',
+        '/images/mogitate/products_search_high_to_low.webp',
+        '/images/mogitate/products_search_low_to_high.webp',
+        '/images/mogitate/products_register.webp',
+        '/images/mogitate/products_detail.webp',
+        '/images/mogitate/products_search.webp'
     ],
     'attendance_users': [
         '/images/attendance/users/attendance_register.png',

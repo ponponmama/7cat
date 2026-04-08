@@ -19,7 +19,7 @@
     <!-- 共通のスタイルシート（最後に読み込んでメディアクエリを優先） -->
     <link rel="stylesheet" href="/css/portfolio.css">
     <!-- 共通のJavaScript -->
-    <script src="/js/portfolio.js"></script>
+    <script defer src="/js/portfolio.js"></script>
 </head>
 
 <body class="common-body">
@@ -64,7 +64,7 @@
     </main>
 
     <!-- JavaScriptファイルの読み込み -->
-    <script src="/js/works.js"></script>
+    <script src="/js/works.min.js"></script>
     <script src="/js/contact.js"></script>
     </main>
 </body>
