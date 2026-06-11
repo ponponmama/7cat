@@ -100,6 +100,7 @@
 
 .custom-generator-icons .generator-icons {
     height: 38px;
+    width: auto;
     margin: 0;
     max-width: 100%;
 }

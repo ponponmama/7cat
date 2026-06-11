@@ -93,6 +93,20 @@ const imageSets = {
         '/images/rese/shops/shop_manager_reviews.png',
         '/images/rese/shops/shop_manager_reviews_modal.png',
     ],
+    'portfolio': [
+        '/images/portfolio/7cat.sakura.ne.jp_html.png',
+        '/images/portfolio/7cat.sakura.ne.jp_modal.png',
+    ],
+    'schoen': [
+        '/images/schoen/ech-schoen.top.png',
+        '/images/schoen/top.iPhone SE.png',
+        '/images/schoen/ech-schoen.works.png',
+        '/images/schoen/works.iPhone SE.png',
+        '/images/schoen/ech-schoen.access.png',
+        '/images/schoen/access.iPhone SE.png',
+        '/images/schoen/ech-schoen.contact.png',
+        '/images/schoen/contact.iPhone SE.png',
+    ],
 };
 
 const workContents = {
@@ -247,6 +261,40 @@ const workContents = {
         `,
         links: [
             { text: 'GitHub', url: 'https://github.com/ponponmama/20240713-erika_hara-rese.git' }
+        ]
+    },
+    'schoen': {
+        title: 'Euro Car Haus Schoen<br>（コーポレートサイト）',
+        description: `
+            <ul class="work-description-list">
+                <li>欧州車（BMW）の整備・ドレスアップを専門とする自動車整備店のコーポレートサイト。さくらレンタルサーバーで公開・運用中の実案件。</li>
+                <li>複数ページ構成の情報設計・レイアウト（Top / Works / Access / Contact）</li>
+                <li>ハンバーガーメニューの実装（小画面向けナビゲーション、JavaScriptで開閉制御）</li>
+                <li>お問い合わせフォーム（JSによるクライアントサイドバリデーション・PHPによるサーバーサイドバリデーションの二重チェック・メール送信）</li>
+                <li>画像の最適化（WebP変換による表示速度改善）</li>
+                <li>レスポンシブデザイン: スマートフォン、タブレット、PC など様々な画面サイズに対応</li>
+                <li>さくらレンタルサーバーへのデプロイ・運用管理。</li>
+                <li>コメント：新規開業のご相談をいただき、コミュニケーションに時間を費やしご本人の求めているものに近づけました。</li>
+            </ul>
+        `,
+        links: [
+            { text: 'GitHub', url: 'https://github.com/ponponmama/schoen.git' }
+        ]
+    },
+    'portfolio': {
+        title: 'Erika Hara\'s Portfolio<br>（個人ポートフォリオ）',
+        description: `
+            <ul class="work-description-list">
+                <li>個人用シングルページポートフォリオ。HTML / CSS / JavaScriptのみで構成する静的サイト。</li>
+                <li>Works: 各制作物をモーダルで開き、画像・説明文を表示。カードに使用技術のタグを表示。</li>
+                <li>About: スキル一覧（フロントエンド・バックエンド）をスターレーティングで表示。</li>
+                <li>Contact: お問い合わせフォーム（PHPによるメール送信）。</li>
+                <li>レスポンシブデザイン: スマートフォン、タブレット、PC など様々な画面サイズに対応。</li>
+                <li>さくらレンタルサーバーへのデプロイ・運用管理。</li>
+            </ul>
+        `,
+        links: [
+            { text: 'GitHub', url: 'https://github.com/ponponmama/7cat.git' }
         ]
     },
 
