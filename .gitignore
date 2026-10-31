@@ -1,5 +1,3 @@
-/docker/mysql/data/
-/vendor
 .env
 ../ssl/nginx.crt
 ../ssl/nginx.key
@@ -8,6 +6,3 @@ cspell.json
 .vscode
 cspell.json
 .cspell
-src/config/mail.php
-docker-compose.yml
-docker/nginx/default.conf
